@@ -249,41 +249,8 @@ Při hlášení chyby uveďte verzi integrace a HA, model routeru, verzi SRM, po
 - Při výpadku komunikace se používá stav nedostupnosti; výpadek se nepovažuje za odpojení všech klientů.
 - Vlastní detaily využívají frontend HA; kompatibilitu s jinými verzemi je nutné ověřit.
 
-## Vývoj a příspěvky
-
-Struktura projektu:
-
-```text
-custom_components/synology_srm_extended/  Integrace a vlastní rozhraní
-custom_components/synology_srm_extended/translations/  Překlady HA
-custom_components/synology_srm_extended/frontend/locales/  Překlady vlastního rozhraní
-tests/                                  Automatizované testy
-tools/                                  Sestavení a pomocné nástroje
-docs/                                   Technické podklady
-```
-
-Instalace vývojových závislostí a základní kontroly:
-
-```sh
-python -m pip install -r requirements-dev.txt
-python -m pytest -q
-python -m ruff check .
-```
-
-Sestavení instalačního ZIP:
-
-```sh
-python tools/build.py
-```
-
-Balíček se vytvoří ve složce `dist`. Sestavení také vloží lokální překlady do frontendového JavaScriptu. Prohlížečové testy vyžadují Node.js, Playwright a Microsoft Edge; cestu k modulu Playwright lze předat proměnnou `PLAYWRIGHT_MODULE`.
-
-Vítané jsou opravy překladů, reprodukovatelné chyby a zkušenosti s dalšími modely SRM. Změny API by měly vycházet z doložených odpovědí, zachovat anonymizaci diagnostiky a nezaměňovat chybějící údaje za nulu.
-
-Technické podklady: [API](docs/API.md) · [Původ loga a značky](docs/BRAND.md).
-
 ## Licence a značky
 
-Projekt zatím neobsahuje soubor `LICENSE`; podmínky licence zdrojového kódu je potřeba před veřejným vydáním doplnit.
+Projekt je poskytován zdarma pouze pro osobní a nekomerční použití. Podrobné podmínky jsou uvedeny v souboru [LICENSE](LICENSE).
 
 Synology a související loga jsou značkami jejich vlastníka. Použití názvu a loga označuje kompatibilitu a neznamená oficiální podporu nebo spojení se společností Synology.
