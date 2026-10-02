@@ -19,7 +19,7 @@ Konfigurace probíhá přes uživatelské rozhraní. Pro běžné používání 
 - [Diagnostika a řešení problémů](#diagnostika-a-řešení-problémů)
 - [Soukromí a zabezpečení](#soukromí-a-zabezpečení)
 - [Známá omezení](#známá-omezení)
-- [Vývoj a příspěvky](#vývoj-a-příspěvky)
+- [Licence a značky](#Licence-a-značky)
 
 ## Funkce
 
