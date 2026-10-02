@@ -137,12 +137,12 @@ Aktuálně je zdokumentovaná ruční instalace. Instalace přes HACS není v to
 | Pole | Popis |
 | --- | --- |
 | Host | IP adresa nebo hostname routeru, bez `http://`, `https://` a portu |
-| Port | Port webového rozhraní SRM; výchozí hodnota integrace je `8001` |
+| Port | Port webového rozhraní SRM; běžně `8001` pro HTTPS a `8000` pro HTTP |
 | HTTPS | Použití šifrovaného připojení; standardně zapnuté |
 | Ověřování certifikátu | Standardně zapnuté |
 | Uživatelské jméno a heslo | Přihlašovací údaje účtu SRM |
 
-Použijte skutečný port nastavený ve vašem routeru. Pokud používáte vlastní nedůvěryhodný certifikát, lze jeho ověřování výslovně vypnout; vhodnější je důvěryhodný certifikát. Integrace sama nepřepíná z HTTPS na HTTP.
+Použijte skutečný port nastavený ve vašem routeru. Pro HTTPS se běžně používá port `8001`, pro HTTP port `8000`. Pokud používáte vlastní nedůvěryhodný certifikát, lze jeho ověřování výslovně vypnout; vhodnější je důvěryhodný certifikát. Integrace sama nepřepíná z HTTPS na HTTP.
 
 ## Nastavení
 
