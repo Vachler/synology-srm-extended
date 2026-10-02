@@ -1,5 +1,5 @@
-[![Čeština](https://img.shields.io/badge/🇨🇿-Čeština-blue)](README.md)
-[![English](https://img.shields.io/badge/🇬🇧-English-blue)](README_EN.md)
+[![Čeština](https://img.shields.io/badge/🇨🇿%20Čeština-2f3136?style=for-the-badge)](README.md)
+[![English](https://img.shields.io/badge/🇬🇧%20English-2f3136?style=for-the-badge)](README_EN.md)
 
 # Synology SRM Extended
 
