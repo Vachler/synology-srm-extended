@@ -91,11 +91,30 @@ Vlastní tabulky, detaily a WOL jsou dostupné správci HA. Integrace využívá
 
 ## Instalace
 
-Aktuálně je zdokumentovaná **ruční instalace**. Instalace přes HACS není v tomto projektu připravená.
+Aktuálně je zdokumentovaná ruční instalace. Instalace přes HACS není v tomto projektu připravená.
 
 1. Stáhněte instalační ZIP pro požadovanou verzi a rozbalte jej.
-2. Zkopírujte celou složku `custom_components/synology_srm_extended` do složky `custom_components` v konfiguraci HA. Použít můžete například sdílení Samba nebo správce souborů.
+
+2. V rozbaleném balíčku otevřete složku:
+
+   `custom_components`
+
+   a z ní zkopírujte **pouze složku**:
+
+   `synology_srm_extended`
+
+   do složky:
+
+   `/config/custom_components/`
+
+   v Home Assistantu.
+
+   Výsledná cesta tedy musí být:
+
+   `/config/custom_components/synology_srm_extended/`
+
 3. Ověřte výslednou strukturu:
+
 
    ```text
    /config/
