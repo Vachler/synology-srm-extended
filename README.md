@@ -1,3 +1,5 @@
+🇨🇿 Čeština | [🇬🇧 English](README_EN.md)
+
 # Synology SRM Extended
 
 Neoficiální integrace routerů Synology se systémem **SRM** do **Home Assistantu**. Nabízí přehled klientů, sledování vybraných zařízení, systémové údaje, informace o mesh síti a Wake-on-LAN přímo v rozhraní integrace.
