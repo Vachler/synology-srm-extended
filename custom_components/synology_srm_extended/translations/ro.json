@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectarea la Synology RT6600ax",
+        "description": "Creează un dispozitiv router cu rezumate și o listă de clienți. Entitățile client sunt opționale. WOL este trimis doar manual. Vă recomandăm HTTPS și verificarea certificatului.",
+        "data": {
+          "host": "adresa IP sau numele gazdei",
+          "port": "Port SRM",
+          "https": "Utilizați HTTPS",
+          "verify_ssl": "Verificați certificatul TLS",
+          "username": "Nume de utilizator SRM",
+          "password": "parola SRM"
+        },
+        "data_description": {
+          "host": "Fără https://, port sau cale.",
+          "port": "De obicei, 8001 pentru HTTPS sau 8000 pentru HTTP.",
+          "verify_ssl": "Dezactivarea este o opțiune explicită pentru un certificat local neîncrezat."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Restabiliți autentificarea la SRM",
+        "description": "Introduceți datele curente ale aceluiași router. Identitățile clienților vor fi păstrate.",
+        "data": {
+          "host": "adresa IP sau numele gazdei",
+          "port": "Port SRM",
+          "https": "Utilizați HTTPS",
+          "verify_ssl": "Verificați certificatul TLS",
+          "username": "Nume de utilizator SRM",
+          "password": "parola SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "Schimbați conexiunea la același router",
+        "description": "Utilizați când schimbați IP-ul sau detaliile de conectare. Identitatea configurației va rămâne aceeași.",
+        "data": {
+          "host": "adresa IP sau numele gazdei",
+          "port": "Port SRM",
+          "https": "Utilizați HTTPS",
+          "verify_ssl": "Verificați certificatul TLS",
+          "username": "Nume de utilizator SRM",
+          "password": "parola SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nu se poate conecta la SRM. Verificați adresa, portul și disponibilitatea routerului.",
+      "invalid_host": "Introduceți numai adresa IP sau numele de gazdă, fără protocol, port și cale.",
+      "invalid_auth": "Conectarea la SRM a eșuat. Verificați detaliile contului și permisiunile.",
+      "permission_denied": "Contul nu are permisiunea de a citi clienții router.",
+      "invalid_certificate": "Certificatul nu poate fi verificat. Verificați numele de gazdă și certificatul; dezactivați doar în mod conștient autentificarea.",
+      "two_factor_required": "SRM necesită un factor de conectare suplimentar. Acest flux nu este încă susținut de integrare. Nu dezactivați automat 2FA.",
+      "unsupported_api": "Routerul nu acceptă API-ul client necesar v5.",
+      "unsupported_response": "API-ul client returnează o structură diferită. Rulați diagnosticarea locală tools/probe.py conform instrucțiunilor. DevTools nu sunt necesare."
+    },
+    "abort": {
+      "single_instance_allowed": "Această versiune acceptă un singur router. Pentru a schimba adresa, utilizați Reconfigure cu o integrare existentă.",
+      "already_configured": "Routerul este deja configurat.",
+      "reauth_successful": "Conectarea a fost restabilită.",
+      "reconfigure_successful": "Setările de conexiune au fost modificate."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Clienți sub router",
+        "description": "Intervalul client poate fi setat de la 5 secunde (implicit 30 s). Tabelul tuturor clienților rămâne cu routerul. Entitățile client și trackerele selectate se află în dispozitivul Clienti integrati în cadrul acestei integrări.",
+        "data": {
+          "poll_interval": "Intervalul de citire al clientului în secunde",
+          "create_clients": "Permiteți entităților selectate să se conecteze",
+          "create_trackers": "Creați instrumente de urmărire a prezenței",
+          "tracker_clients": "Clienți cu un tracker",
+          "client_entities": "Clienți cu o entitate de conectare separată",
+          "remove_unselected": "Eliminați entitățile client neselectate ale acestei integrări",
+          "traffic_source_unit": "Unitate de intrare verificată la viteza routerului",
+          "traffic_rx_direction": "Semnificația verificată a recepției RX"
+        },
+        "data_description": {
+          "tracker_clients": "Selecția activează tracker-ul în dispozitivul Integrated Clients. O selecție goală înseamnă că nu există trackere.",
+          "poll_interval": "5 până la 3600 de secunde. Valoarea implicită este 30. Cinci secunde înseamnă 12 interogări pe minut; acestea nu sunt evenimente imediate.",
+          "client_entities": "O selecție goală nu va crea nicio entitate client. Lista tuturor clienților va rămâne la router.",
+          "remove_unselected": "De asemenea, va curăța entitățile create automat de versiunea 0.1.0. Elimină entitățile neselectate și setările acestora din registrul HA; automatizarea lor poate fi necesară modificarea. Nu va elimina routerul sau alte integrări.",
+          "traffic_source_unit": "Setați numai după validarea față de SRM. Ieșirea tabelului va fi întotdeauna KB/s (1000 B/s). Vitezele neverificate vor rămâne necompletate.",
+          "traffic_rx_direction": "Descărcarea și încărcarea se referă la client. Până la verificarea direcției, RX/TX originale sunt doar în detalii."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - conexiune"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – prezență"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Clienți cunoscuți în SRM"
+      },
+      "clients_online": {
+        "name": "Clienți online"
+      },
+      "clients_offline": {
+        "name": "Clienți offline"
+      },
+      "clients_wifi": {
+        "name": "Clienți Wi-Fi online"
+      },
+      "clients_lan": {
+        "name": "Clienți LAN online"
+      },
+      "clients_guest": {
+        "name": "Invitați online"
+      },
+      "wan_ipv4": {
+        "name": "Starea WAN IPv4 de către SRM"
+      },
+      "wan_ipv6": {
+        "name": "Starea WAN IPv6 de către SRM"
+      },
+      "cpu_total": {
+        "name": "CPU - utilizare totală"
+      },
+      "cpu_user": {
+        "name": "CPU - sarcina utilizatorului"
+      },
+      "cpu_system": {
+        "name": "CPU - încărcarea sistemului"
+      },
+      "cpu_other": {
+        "name": "CPU - alte sarcini"
+      },
+      "ram_calculated": {
+        "name": "RAM - utilizați fără cache și buffer-uri"
+      },
+      "ram_usage": {
+        "name": "Utilizarea RAM de către SRM"
+      },
+      "swap_usage": {
+        "name": "Utilizarea swap-ului conform SRM"
+      },
+      "mesh_nodes": {
+        "name": "Numărul de noduri de plasă"
+      },
+      "network_interfaces": {
+        "name": "Numărul de interfețe de rețea"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Neverificat încă",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Neverificat încă",
+        "download": "RX = descărcare client, TX = încărcare",
+        "upload": "RX = încărcare client, TX = descărcare"
+      }
+    }
+  }
+}

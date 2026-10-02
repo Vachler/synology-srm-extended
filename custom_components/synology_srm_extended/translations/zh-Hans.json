@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "连接到 Synology RT6600ax",
+        "description": "创建具有摘要和客户端列表的路由器设备。客户端实体是可选的。 WOL 仅手动发送。我们建议使用 HTTPS 和证书验证。",
+        "data": {
+          "host": "IP 地址或主机名",
+          "port": "SRM端口",
+          "https": "使用 HTTPS",
+          "verify_ssl": "验证 TLS 证书",
+          "username": "用户名 SRM",
+          "password": "SRM密码"
+        },
+        "data_description": {
+          "host": "没有 https://、端口或路径。",
+          "port": "通常，HTTPS 为 8001，HTTP 为 8000。",
+          "verify_ssl": "禁用是不受信任的本地证书的显式选项。"
+        }
+      },
+      "reauth_confirm": {
+        "title": "恢复 SRM 登录",
+        "description": "输入同一路由器的当前数据。客户身份将被保留。",
+        "data": {
+          "host": "IP 地址或主机名",
+          "port": "SRM端口",
+          "https": "使用 HTTPS",
+          "verify_ssl": "验证 TLS 证书",
+          "username": "用户名 SRM",
+          "password": "SRM密码"
+        }
+      },
+      "reconfigure": {
+        "title": "更改连接到同一路由器",
+        "description": "更改 IP 或登录详细信息时使用。配置的标识将保持不变。",
+        "data": {
+          "host": "IP 地址或主机名",
+          "port": "SRM端口",
+          "https": "使用 HTTPS",
+          "verify_ssl": "验证 TLS 证书",
+          "username": "用户名 SRM",
+          "password": "SRM密码"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "无法连接到 SRM。检查路由器的地址、端口和可用性。",
+      "invalid_host": "仅输入 IP 地址或主机名，不输入协议、端口和路径。",
+      "invalid_auth": "登录 SRM 失败。验证帐户详细信息和权限。",
+      "permission_denied": "该帐户没有读取路由器客户端的权限。",
+      "invalid_certificate": "无法验证证书。验证主机名和证书；只能有意识地关闭身份验证。",
+      "two_factor_required": "SRM 需要额外的登录因素。集成尚不支持此流程。不要自动关闭 2FA。",
+      "unsupported_api": "路由器不支持所需的客户端 API v5。",
+      "unsupported_response": "客户端 API 返回不同的结构。按照指示运行 tools/probe.py 本地诊断。不需要开发工具。"
+    },
+    "abort": {
+      "single_instance_allowed": "该版本支持一台路由器。要更改地址，请使用现有集成的重新配置。",
+      "already_configured": "路由器已经配置好了。",
+      "reauth_successful": "登录已恢复。",
+      "reconfigure_successful": "连接设置已更改。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "路由器下的客户端",
+        "description": "客户端间隔可以设置为 5 秒（默认 30 秒）。所有客户端的表仍保留在路由器中。选定的客户端实体和跟踪器位于此集成下的集成客户端设备中。",
+        "data": {
+          "poll_interval": "客户端读取间隔（秒）",
+          "create_clients": "允许选定的实体连接",
+          "create_trackers": "创建出勤跟踪器",
+          "tracker_clients": "拥有追踪器的客户",
+          "client_entities": "具有单独连接实体的客户端",
+          "remove_unselected": "删除此集成的未选择的客户端实体",
+          "traffic_source_unit": "以路由器速度验证输入单元",
+          "traffic_rx_direction": "验证 RX 接收的意义"
+        },
+        "data_description": {
+          "tracker_clients": "该选择将打开集成客户端设备中的跟踪器。空选择意味着没有跟踪器。",
+          "poll_interval": "5 至 3600 秒。默认值为 30。5 秒表示每分钟 12 个查询；这些都不是立即发生的事件。",
+          "client_entities": "空选择不会创建任何客户端实体。所有客户端的列表将保留在路由器中。",
+          "remove_unselected": "它还会清理 0.1.0 版本自动创建的实体。从 HA 注册表中删除未选定的实体及其设置；他们的自动化可能需要修改。它不会删除路由器或其他集成。",
+          "traffic_source_unit": "仅在针对 SRM 进行验证后设置。表输出将始终为 KB/s (1000 B/s)。未经验证的速度将保留为空白。",
+          "traffic_rx_direction": "下载和上传参考客户端。在验证方向之前，原始的 RX/TX 仅是细节。"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client}——连接"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – 存在"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "SRM知名客户"
+      },
+      "clients_online": {
+        "name": "在线客户"
+      },
+      "clients_offline": {
+        "name": "线下客户"
+      },
+      "clients_wifi": {
+        "name": "在线 Wi-Fi 客户端"
+      },
+      "clients_lan": {
+        "name": "在线局域网客户端"
+      },
+      "clients_guest": {
+        "name": "在线嘉宾"
+      },
+      "wan_ipv4": {
+        "name": "SRM 的 IPv4 WAN 状态"
+      },
+      "wan_ipv6": {
+        "name": "SRM 的 IPv6 WAN 状态"
+      },
+      "cpu_total": {
+        "name": "CPU - 总使用量"
+      },
+      "cpu_user": {
+        "name": "CPU-用户负载"
+      },
+      "cpu_system": {
+        "name": "CPU-系统负载"
+      },
+      "cpu_other": {
+        "name": "CPU-其他负载"
+      },
+      "ram_calculated": {
+        "name": "RAM - 不使用高速缓存和缓冲区"
+      },
+      "ram_usage": {
+        "name": "SRM 的 RAM 使用情况"
+      },
+      "swap_usage": {
+        "name": "根据SRM使用交换"
+      },
+      "mesh_nodes": {
+        "name": "网格节点数"
+      },
+      "network_interfaces": {
+        "name": "网络接口数量"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "尚未验证",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "尚未验证",
+        "download": "RX=客户端下载，TX=上传",
+        "upload": "RX=客户端上传，TX=下载"
+      }
+    }
+  }
+}

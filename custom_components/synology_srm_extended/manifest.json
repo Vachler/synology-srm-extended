@@ -1,0 +1,17 @@
+{
+  "domain": "synology_srm_extended",
+  "name": "Synology SRM Extended",
+  "version": "0.1.12",
+  "config_flow": true,
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "documentation": "https://kb.synology.com/en-us/SRM",
+  "requirements": [],
+  "codeowners": [],
+  "dependencies": [
+    "frontend",
+    "http",
+    "websocket_api",
+    "panel_custom"
+  ]
+}

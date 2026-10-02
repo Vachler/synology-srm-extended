@@ -1,0 +1,174 @@
+{
+  "title": "Synology SRM mở rộng",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Kết nối với Synology RT6600ax",
+        "description": "Tạo một thiết bị định tuyến với các bản tóm tắt và danh sách khách hàng. Các thực thể khách hàng là tùy chọn. WOL chỉ được gửi thủ công. Chúng tôi khuyên bạn nên xác minh HTTPS và chứng chỉ.",
+        "data": {
+          "host": "Địa chỉ IP hoặc tên máy chủ",
+          "port": "cổng SRM",
+          "https": "Sử dụng HTTPS",
+          "verify_ssl": "Xác minh chứng chỉ TLS",
+          "username": "Tên người dùng SRM",
+          "password": "Mật khẩu SRM"
+        },
+        "data_description": {
+          "host": "Không có https://, cổng hoặc đường dẫn.",
+          "port": "Thông thường là 8001 cho HTTPS hoặc 8000 cho HTTP.",
+          "verify_ssl": "Tắt là một tùy chọn rõ ràng cho chứng chỉ cục bộ không đáng tin cậy."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Khôi phục đăng nhập vào SRM",
+        "description": "Nhập dữ liệu hiện tại của cùng một bộ định tuyến. Danh tính của khách hàng sẽ được bảo tồn.",
+        "data": {
+          "host": "Địa chỉ IP hoặc tên máy chủ",
+          "port": "cổng SRM",
+          "https": "Sử dụng HTTPS",
+          "verify_ssl": "Xác minh chứng chỉ TLS",
+          "username": "Tên người dùng SRM",
+          "password": "Mật khẩu SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "Thay đổi kết nối đến cùng một bộ định tuyến",
+        "description": "Sử dụng khi thay đổi IP hoặc chi tiết đăng nhập. Danh tính của cấu hình sẽ được giữ nguyên.",
+        "data": {
+          "host": "Địa chỉ IP hoặc tên máy chủ",
+          "port": "cổng SRM",
+          "https": "Sử dụng HTTPS",
+          "verify_ssl": "Xác minh chứng chỉ TLS",
+          "username": "Tên người dùng SRM",
+          "password": "Mật khẩu SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Không thể kết nối với SRM. Kiểm tra địa chỉ, cổng và tính khả dụng của bộ định tuyến.",
+      "invalid_host": "Chỉ nhập địa chỉ IP hoặc tên máy chủ, không có giao thức, cổng và đường dẫn.",
+      "invalid_auth": "Đăng nhập vào SRM không thành công. Xác minh chi tiết tài khoản và quyền.",
+      "permission_denied": "Tài khoản không có quyền đọc ứng dụng khách của bộ định tuyến.",
+      "invalid_certificate": "Chứng chỉ không thể được xác minh. Xác minh tên máy chủ và chứng chỉ; chỉ có ý thức tắt xác thực.",
+      "two_factor_required": "SRM yêu cầu yếu tố đăng nhập bổ sung. Luồng này chưa được hỗ trợ bởi sự tích hợp. Đừng tự động tắt 2FA.",
+      "unsupported_api": "Bộ định tuyến không hỗ trợ API máy khách bắt buộc v5.",
+      "unsupported_response": "API máy khách trả về một cấu trúc khác. Chạy chẩn đoán cục bộ tools/probe.py theo hướng dẫn. DevTools là không cần thiết."
+    },
+    "abort": {
+      "single_instance_allowed": "Phiên bản này hỗ trợ một bộ định tuyến. Để thay đổi địa chỉ, hãy sử dụng Cấu hình lại với tiện ích tích hợp hiện có.",
+      "already_configured": "Bộ định tuyến đã được cấu hình.",
+      "reauth_successful": "Đăng nhập đã được khôi phục.",
+      "reconfigure_successful": "Cài đặt kết nối đã được thay đổi."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Khách hàng dưới bộ định tuyến",
+        "description": "Khoảng thời gian của khách hàng có thể được đặt từ 5 giây (mặc định là 30 giây). Bảng của tất cả các máy khách vẫn còn ở bộ định tuyến. Các thực thể khách hàng và trình theo dõi đã chọn nằm trong thiết bị Khách hàng Tích hợp trong phần tích hợp này.",
+        "data": {
+          "poll_interval": "Khoảng thời gian đọc của khách hàng tính bằng giây",
+          "create_clients": "Cho phép các thực thể được chọn kết nối",
+          "create_trackers": "Tạo trình theo dõi điểm danh",
+          "tracker_clients": "Khách hàng có trình theo dõi",
+          "collect_diagnostics": "Thu thập chẩn đoán mở rộng",
+          "client_entities": "Khách hàng có thực thể kết nối riêng biệt",
+          "remove_unselected": "Xóa các thực thể khách hàng không được chọn của tiện ích tích hợp này",
+          "traffic_source_unit": "Đơn vị đầu vào đã được xác minh ở tốc độ của bộ định tuyến",
+          "traffic_rx_direction": "Tầm quan trọng đã được xác minh của việc thu sóng RX"
+        },
+        "data_description": {
+          "tracker_clients": "Việc lựa chọn sẽ bật trình theo dõi trong thiết bị Khách hàng Tích hợp. Lựa chọn trống có nghĩa là không có trình theo dõi.",
+          "poll_interval": "5 đến 3600 giây. Giá trị mặc định là 30. Năm giây nghĩa là 12 truy vấn mỗi phút; đây không phải là những sự kiện ngay lập tức.",
+          "client_entities": "Lựa chọn trống sẽ không tạo ra bất kỳ thực thể khách hàng nào. Danh sách tất cả các máy khách sẽ vẫn còn ở bộ định tuyến.",
+          "remove_unselected": "Nó cũng sẽ dọn sạch các thực thể được tạo tự động bởi phiên bản 0.1.0. Xóa các thực thể không được chọn và cài đặt của chúng khỏi sổ đăng ký HA; tự động hóa của họ có thể cần phải được sửa đổi. Nó sẽ không loại bỏ bộ định tuyến hoặc các tích hợp khác.",
+          "traffic_source_unit": "Chỉ đặt sau khi xác nhận với SRM. Đầu ra của bảng sẽ luôn là KB/s (1000 B/s). Tốc độ chưa được xác minh sẽ vẫn trống.",
+          "traffic_rx_direction": "Tải xuống và tải lên tham khảo khách hàng. Cho đến khi hướng đi được xác minh, RX/TX ban đầu chỉ có thông tin chi tiết."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - kết nối"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – sự hiện diện"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Khách hàng nổi tiếng ở SRM"
+      },
+      "clients_online": {
+        "name": "Khách hàng trực tuyến"
+      },
+      "clients_offline": {
+        "name": "Khách hàng ngoại tuyến"
+      },
+      "clients_wifi": {
+        "name": "Máy khách Wi-Fi trực tuyến"
+      },
+      "clients_lan": {
+        "name": "Máy khách LAN trực tuyến"
+      },
+      "clients_guest": {
+        "name": "Khách trực tuyến"
+      },
+      "wan_ipv4": {
+        "name": "Trạng thái WAN IPv4 theo SRM"
+      },
+      "wan_ipv6": {
+        "name": "Trạng thái WAN IPv6 theo SRM"
+      },
+      "cpu_total": {
+        "name": "CPU - tổng mức sử dụng"
+      },
+      "cpu_user": {
+        "name": "CPU - tải người dùng"
+      },
+      "cpu_system": {
+        "name": "CPU - tải hệ thống"
+      },
+      "cpu_other": {
+        "name": "CPU - tải khác"
+      },
+      "ram_calculated": {
+        "name": "RAM - sử dụng không có bộ đệm và bộ đệm"
+      },
+      "ram_usage": {
+        "name": "Mức sử dụng RAM của SRM"
+      },
+      "swap_usage": {
+        "name": "Sử dụng swap theo SRM"
+      },
+      "mesh_nodes": {
+        "name": "Số lượng nút lưới"
+      },
+      "network_interfaces": {
+        "name": "Số lượng giao diện mạng"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Chưa được xác minh",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Chưa được xác minh",
+        "download": "RX = tải xuống ứng dụng khách, TX = tải lên",
+        "upload": "RX = tải lên ứng dụng khách, TX = tải xuống"
+      }
+    }
+  }
+}

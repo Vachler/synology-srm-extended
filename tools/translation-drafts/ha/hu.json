@@ -1,0 +1,174 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Csatlakozás a Synology RT6600ax készülékhez",
+        "description": "Létrehoz egy útválasztó eszközt összefoglalókkal és klienslistával. Az ügyfél entitások nem kötelezőek. A WOL csak manuálisan kerül elküldésre. Javasoljuk a HTTPS és a tanúsítvány ellenőrzését.",
+        "data": {
+          "host": "IP-cím vagy gazdagépnév",
+          "port": "SRM port",
+          "https": "Használjon HTTPS-t",
+          "verify_ssl": "Ellenőrizze a TLS-tanúsítványt",
+          "username": "Felhasználónév SRM",
+          "password": "SRM jelszó"
+        },
+        "data_description": {
+          "host": "Nincs https://, port vagy elérési út.",
+          "port": "Általában 8001 HTTPS esetén vagy 8000 HTTP esetén.",
+          "verify_ssl": "A letiltás egy explicit opció a nem megbízható helyi tanúsítványokhoz."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Állítsa vissza a bejelentkezést az SRM-be",
+        "description": "Adja meg ugyanazon útválasztó aktuális adatait. Az ügyfelek identitása megmarad.",
+        "data": {
+          "host": "IP-cím vagy gazdagépnév",
+          "port": "SRM port",
+          "https": "Használjon HTTPS-t",
+          "verify_ssl": "Ellenőrizze a TLS-tanúsítványt",
+          "username": "Felhasználónév SRM",
+          "password": "SRM jelszó"
+        }
+      },
+      "reconfigure": {
+        "title": "Változtassa meg a kapcsolatot ugyanarra a routerre",
+        "description": "Használja az IP vagy bejelentkezési adatok megváltoztatásakor. A konfiguráció azonossága változatlan marad.",
+        "data": {
+          "host": "IP-cím vagy gazdagépnév",
+          "port": "SRM port",
+          "https": "Használjon HTTPS-t",
+          "verify_ssl": "Ellenőrizze a TLS-tanúsítványt",
+          "username": "Felhasználónév SRM",
+          "password": "SRM jelszó"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nem lehet csatlakozni az SRM-hez. Ellenőrizze az útválasztó címét, portját és elérhetőségét.",
+      "invalid_host": "Csak IP-címet vagy gazdagépnevet írjon be, protokoll, port és elérési út nélkül.",
+      "invalid_auth": "Sikertelen bejelentkezés az SRM-be. Ellenőrizze a fiók adatait és engedélyeit.",
+      "permission_denied": "A fióknak nincs engedélye az útválasztó klienseinek olvasására.",
+      "invalid_certificate": "A tanúsítvány nem ellenőrizhető. Ellenőrizze a gazdagépnevet és a tanúsítványt; csak tudatosan kapcsolja ki a hitelesítést.",
+      "two_factor_required": "Az SRM további bejelentkezési tényezőt igényel. Ezt a folyamatot még nem támogatja az integráció. Ne kapcsolja ki automatikusan a 2FA-t.",
+      "unsupported_api": "Az útválasztó nem támogatja a szükséges kliens API v5-öt.",
+      "unsupported_response": "Az ügyfél API más struktúrát ad vissza. Futtassa az tools/probe.py helyi diagnosztikát az utasításoknak megfelelően. DevTools nem szükséges."
+    },
+    "abort": {
+      "single_instance_allowed": "Ez a verzió egy routert támogat. A cím módosításához használja az Újrakonfigurálást egy meglévő integrációval.",
+      "already_configured": "Az útválasztó már konfigurálva van.",
+      "reauth_successful": "A bejelentkezés helyreállt.",
+      "reconfigure_successful": "A kapcsolat beállításai módosultak."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Kliensek a router alatt",
+        "description": "Az ügyfélintervallum 5 másodperctől állítható be (alapértelmezett 30 mp). Az összes kliens táblázata a routernél marad. A kiválasztott kliens entitások és nyomkövetők az Integrated Clients eszközben találhatók ezen integráció alatt.",
+        "data": {
+          "poll_interval": "Az ügyfél olvasási időköze másodpercben",
+          "create_clients": "Engedélyezze a kiválasztott entitások csatlakozását",
+          "create_trackers": "Hozzon létre jelenléti nyomkövetőket",
+          "tracker_clients": "Ügyfelek nyomkövetővel",
+          "collect_diagnostics": "Gyűjtse össze a kiterjesztett diagnosztikát",
+          "client_entities": "Külön kapcsolati entitással rendelkező ügyfelek",
+          "remove_unselected": "Távolítsa el az integráció nem kiválasztott kliens entitásait",
+          "traffic_source_unit": "Ellenőrzött bemeneti egység a router sebességén",
+          "traffic_rx_direction": "Az RX vétel igazolt jelentősége"
+        },
+        "data_description": {
+          "tracker_clients": "A kiválasztás bekapcsolja a nyomkövetőt az Integrated Clients eszközben. Az üres kijelölés azt jelenti, hogy nincsenek nyomkövetők.",
+          "poll_interval": "5-3600 másodperc. Az alapértelmezett érték 30. Az öt másodperc percenként 12 lekérdezést jelent; ezek nem azonnali események.",
+          "client_entities": "Az üres kijelölés nem hoz létre kliens entitásokat. Az összes kliens listája a routernél marad.",
+          "remove_unselected": "A 0.1.0 verzió által automatikusan létrehozott entitásokat is megtisztítja. Eltávolítja a nem kiválasztott entitásokat és azok beállításait a HA nyilvántartásból; az automatizálásukat esetleg módosítani kell. Nem távolítja el az útválasztót vagy más integrációkat.",
+          "traffic_source_unit": "Csak az SRM elleni érvényesítés után állítsa be. A táblázat kimenete mindig KB/s (1000 B/s) lesz. Az ellenőrizetlen sebességek üresen maradnak.",
+          "traffic_rx_direction": "Letöltés és feltöltés hivatkozzon a kliensre. Az irány ellenőrzéséig az eredeti RX/TX csak részletekben van."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - csatlakozás"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – jelenlét"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Jól ismert ügyfelek az SRM-ben"
+      },
+      "clients_online": {
+        "name": "Online ügyfelek"
+      },
+      "clients_offline": {
+        "name": "Offline ügyfelek"
+      },
+      "clients_wifi": {
+        "name": "Online Wi-Fi kliensek"
+      },
+      "clients_lan": {
+        "name": "Online LAN kliensek"
+      },
+      "clients_guest": {
+        "name": "Online vendégek"
+      },
+      "wan_ipv4": {
+        "name": "Az SRM IPv4 WAN állapota"
+      },
+      "wan_ipv6": {
+        "name": "Az SRM IPv6 WAN állapota"
+      },
+      "cpu_total": {
+        "name": "CPU – teljes használat"
+      },
+      "cpu_user": {
+        "name": "CPU – felhasználói terhelés"
+      },
+      "cpu_system": {
+        "name": "CPU - rendszerterhelés"
+      },
+      "cpu_other": {
+        "name": "CPU - egyéb terhelések"
+      },
+      "ram_calculated": {
+        "name": "RAM - gyorsítótár és pufferek nélkül használható"
+      },
+      "ram_usage": {
+        "name": "SRM RAM-használat"
+      },
+      "swap_usage": {
+        "name": "Swap használata az SRM szerint"
+      },
+      "mesh_nodes": {
+        "name": "A hálócsomópontok száma"
+      },
+      "network_interfaces": {
+        "name": "Hálózati interfészek száma"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Még nincs ellenőrizve",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Még nincs ellenőrizve",
+        "download": "RX = kliens letöltés, TX = feltöltés",
+        "upload": "RX = kliens feltöltés, TX = letöltés"
+      }
+    }
+  }
+}

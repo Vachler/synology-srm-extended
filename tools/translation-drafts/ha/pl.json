@@ -1,0 +1,174 @@
+{
+  "title": "Rozszerzony Synology SRM",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Podłączanie do Synology RT6600ax",
+        "description": "Tworzy urządzenie routera z podsumowaniami i listą klientów. Jednostki klienta są opcjonalne. WOL jest wysyłany wyłącznie ręcznie. Zalecamy weryfikację protokołu HTTPS i certyfikatu.",
+        "data": {
+          "host": "Adres IP lub nazwa hosta",
+          "port": "portu SRM",
+          "https": "Użyj protokołu HTTPS",
+          "verify_ssl": "Zweryfikuj certyfikat TLS",
+          "username": "Nazwa użytkownika SRM",
+          "password": "Hasło SRM"
+        },
+        "data_description": {
+          "host": "Brak https://, portu lub ścieżki.",
+          "port": "Zwykle 8001 dla HTTPS lub 8000 dla HTTP.",
+          "verify_ssl": "Wyłącz jest wyraźną opcją dla niezaufanego certyfikatu lokalnego."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Przywróć logowanie do SRM",
+        "description": "Wprowadź aktualne dane tego samego routera. Tożsamość klientów zostanie zachowana.",
+        "data": {
+          "host": "Adres IP lub nazwa hosta",
+          "port": "portu SRM",
+          "https": "Użyj protokołu HTTPS",
+          "verify_ssl": "Zweryfikuj certyfikat TLS",
+          "username": "Nazwa użytkownika SRM",
+          "password": "Hasło SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "Zmień połączenie na ten sam router",
+        "description": "Użyj przy zmianie adresu IP lub danych logowania. Tożsamość konfiguracji pozostanie taka sama.",
+        "data": {
+          "host": "Adres IP lub nazwa hosta",
+          "port": "portu SRM",
+          "https": "Użyj protokołu HTTPS",
+          "verify_ssl": "Zweryfikuj certyfikat TLS",
+          "username": "Nazwa użytkownika SRM",
+          "password": "Hasło SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie można połączyć się z SRM. Sprawdź adres, port i dostępność routera.",
+      "invalid_host": "Wprowadź tylko adres IP lub nazwę hosta, bez protokołu, portu i ścieżki.",
+      "invalid_auth": "Logowanie do SRM nie powiodło się. Sprawdź szczegóły konta i uprawnienia.",
+      "permission_denied": "Konto nie ma uprawnień do odczytu klientów routera.",
+      "invalid_certificate": "Nie można zweryfikować certyfikatu. Sprawdź nazwę hosta i certyfikat; tylko świadomie wyłączaj uwierzytelnianie.",
+      "two_factor_required": "SRM wymaga dodatkowego czynnika logowania. Ten przepływ nie jest jeszcze obsługiwany przez integrację. Nie wyłączaj automatycznie 2FA.",
+      "unsupported_api": "Router nie obsługuje wymaganego interfejsu API klienta v5.",
+      "unsupported_response": "Interfejs API klienta zwraca inną strukturę. Uruchom lokalną diagnostykę Tools/probe.py zgodnie z instrukcją. Narzędzia deweloperskie nie są potrzebne."
+    },
+    "abort": {
+      "single_instance_allowed": "Ta wersja obsługuje jeden router. Aby zmienić adres, użyj opcji Rekonfiguruj z istniejącą integracją.",
+      "already_configured": "Router jest już skonfigurowany.",
+      "reauth_successful": "Logowanie zostało przywrócone.",
+      "reconfigure_successful": "Ustawienia połączenia zostały zmienione."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Klienci pod routerem",
+        "description": "Interwał klienta można ustawić od 5 sekund (domyślnie 30 s). Tabela wszystkich klientów pozostaje w routerze. Wybrane jednostki klienckie i moduły śledzące znajdują się na urządzeniu Klienta Zintegrowanego w ramach tej integracji.",
+        "data": {
+          "poll_interval": "Interwał odczytu klienta w sekundach",
+          "create_clients": "Zezwól wybranym podmiotom na połączenie",
+          "create_trackers": "Twórz moduły do śledzenia obecności",
+          "tracker_clients": "Klienci z trackerem",
+          "collect_diagnostics": "Zbierz rozszerzoną diagnostykę",
+          "client_entities": "Klienci z oddzielną jednostką połączenia",
+          "remove_unselected": "Usuń niewybrane jednostki klienckie tej integracji",
+          "traffic_source_unit": "Zweryfikowano jednostkę wejściową przy prędkości routera",
+          "traffic_rx_direction": "Zweryfikowano znaczenie odbioru RX"
+        },
+        "data_description": {
+          "tracker_clients": "Wybór powoduje włączenie modułu śledzącego w urządzeniu Integrated Client. Pusty wybór oznacza brak modułów śledzących.",
+          "poll_interval": "5 do 3600 sekund. Wartość domyślna to 30. Pięć sekund oznacza 12 zapytań na minutę; nie są to zdarzenia bezpośrednie.",
+          "client_entities": "Pusty wybór nie spowoduje utworzenia żadnych jednostek klienckich. Lista wszystkich klientów pozostanie w routerze.",
+          "remove_unselected": "Wyczyści także elementy utworzone automatycznie w wersji 0.1.0. Usuwa niewybrane jednostki i ich ustawienia z rejestru HA; ich automatyzacja może wymagać modyfikacji. Nie usunie routera ani innych integracji.",
+          "traffic_source_unit": "Ustawiane dopiero po sprawdzeniu poprawności względem SRM. Dane wyjściowe tabeli będą zawsze wynosić KB/s (1000 B/s). Niezweryfikowane prędkości pozostaną puste.",
+          "traffic_rx_direction": "Pobieranie i przesyłanie odnoszą się do klienta. Dopóki kierunek nie zostanie zweryfikowany, oryginalne RX/TX to tylko szczegóły."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - połączenie"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – obecność"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Znani klienci w SRM"
+      },
+      "clients_online": {
+        "name": "Klienci internetowi"
+      },
+      "clients_offline": {
+        "name": "Klienci offline"
+      },
+      "clients_wifi": {
+        "name": "Klienci Wi-Fi online"
+      },
+      "clients_lan": {
+        "name": "Klienci sieci LAN"
+      },
+      "clients_guest": {
+        "name": "Goście w Internecie"
+      },
+      "wan_ipv4": {
+        "name": "Stan sieci WAN IPv4 według SRM"
+      },
+      "wan_ipv6": {
+        "name": "Stan sieci WAN IPv6 według SRM"
+      },
+      "cpu_total": {
+        "name": "Procesor — całkowite wykorzystanie"
+      },
+      "cpu_user": {
+        "name": "Procesor - obciążenie użytkownika"
+      },
+      "cpu_system": {
+        "name": "Procesor - obciążenie systemu"
+      },
+      "cpu_other": {
+        "name": "Procesor - inne obciążenia"
+      },
+      "ram_calculated": {
+        "name": "RAM - używaj bez pamięci podręcznej i buforów"
+      },
+      "ram_usage": {
+        "name": "Użycie pamięci RAM przez SRM"
+      },
+      "swap_usage": {
+        "name": "Stosowanie swapu zgodnie z SRM"
+      },
+      "mesh_nodes": {
+        "name": "Liczba węzłów siatki"
+      },
+      "network_interfaces": {
+        "name": "Liczba interfejsów sieciowych"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Jeszcze nie zweryfikowane",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Jeszcze nie zweryfikowane",
+        "download": "RX = pobieranie klienta, TX = wysyłanie",
+        "upload": "RX = przesyłanie klienta, TX = pobieranie"
+      }
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "title": "Synológia SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Pripojenie k Synology RT6600ax",
+        "description": "Vytvorí zariadenie routera so súhrnmi a zoznamom klientov. Klientske entity sú voliteľné. WOL sa odosiela iba ručne. Odporúčame HTTPS a overenie certifikátu.",
+        "data": {
+          "host": "IP adresa alebo hostname",
+          "port": "Port SRM",
+          "https": "Používať HTTPS",
+          "verify_ssl": "Overovať TLS certifikát",
+          "username": "Užívateľské meno SRM",
+          "password": "Heslo SRM"
+        },
+        "data_description": {
+          "host": "Bez https://, portu alebo cesty.",
+          "port": "Obvykle 8001 pre HTTPS alebo 8000 pre HTTP.",
+          "verify_ssl": "Vypnutie je výslovná voľba pre nedôveryhodný lokálny certifikát."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Obnoviť prihlásenie do SRM",
+        "description": "Zadajte aktuálne údaje rovnakého routera. Identity klientov sa zachovajú.",
+        "data": {
+          "host": "IP adresa alebo hostname",
+          "port": "Port SRM",
+          "https": "Používať HTTPS",
+          "verify_ssl": "Overovať TLS certifikát",
+          "username": "Užívateľské meno SRM",
+          "password": "Heslo SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "Zmeniť pripojenie k rovnakému routeru",
+        "description": "Použite pri zmene IP alebo prihlasovacích údajov. Identita konfigurácie zostane rovnaká.",
+        "data": {
+          "host": "IP adresa alebo hostname",
+          "port": "Port SRM",
+          "https": "Používať HTTPS",
+          "verify_ssl": "Overovať TLS certifikát",
+          "username": "Užívateľské meno SRM",
+          "password": "Heslo SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nedá sa pripojiť k SRM. Skontrolujte adresu, port a dostupnosť routera.",
+      "invalid_host": "Zadajte iba IP adresu alebo hostname, bez protokolu, portu a cesty.",
+      "invalid_auth": "Prihlásenie do SRM zlyhalo. Overte údaje a oprávnenia účtu.",
+      "permission_denied": "Účet nemá oprávnenie čítať klientov routera.",
+      "invalid_certificate": "Certifikát nie je možné overiť. Overte hostname a certifikát; overovanie vypínajte iba vedome.",
+      "two_factor_required": "SRM vyžaduje ďalší faktor prihlásenia. Tento tok zatiaľ integrácia nepodporuje. Nevypínajte 2FA automaticky.",
+      "unsupported_api": "Router nepodporuje požadované klientske API v5.",
+      "unsupported_response": "Klientske API vracia inú štruktúru. Spustite lokálnu diagnostiku tools/probe.py podľa návodu. DevTools nie sú potrebné."
+    },
+    "abort": {
+      "single_instance_allowed": "Táto verzia podporuje jeden router. Na zmenu adresy použite Prekonfigurovať pri existujúcej integrácii.",
+      "already_configured": "Router je už nakonfigurovaný.",
+      "reauth_successful": "Prihlásenie bolo obnovené.",
+      "reconfigure_successful": "Nastavenie pripojenia bolo zmenené."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Klienti pod routerom",
+        "description": "Interval klientov je možné nastaviť od 5 sekúnd (predvolené 30 s). Tabuľka všetkých klientov zostáva pri routeri. Vybrané klientske entity a trackery sú v zariadení Integrovaní klienti pod touto integráciou.",
+        "data": {
+          "poll_interval": "Interval čítania klientov v sekundách",
+          "create_clients": "Povoliť vybrané entity pripojenia",
+          "create_trackers": "Vytvárať trackery pre prítomnosť",
+          "tracker_clients": "Klienti s trackerom",
+          "collect_diagnostics": "Zbierať rozšírenú diagnostiku",
+          "client_entities": "Klienti so samostatnou entitou pripojenia",
+          "remove_unselected": "Odstrániť nevybrané klientske entity tejto integrácie",
+          "traffic_source_unit": "Overená vstupná jednotka rýchlosťou routera",
+          "traffic_rx_direction": "Overený význam príjmu RX"
+        },
+        "data_description": {
+          "tracker_clients": "Výber zapne tracker v zariadení Integrovaní klienti. Prázdny výber znamená žiadnych trackerov.",
+          "poll_interval": "5 až 3600 sekúnd. Predvolená hodnota 30. Päť sekúnd znamená 12 otázok za minútu; nejde o okamžité udalosti.",
+          "client_entities": "Prázdny výber nevytvorí žiadne klientske entity. Zoznam všetkých klientov zostane pri routeri.",
+          "remove_unselected": "Upracú tiež entity automaticky vytvorené verziou 0.1.0. Odstráni nevybrané entity a ich nastavenie z registra HA; ich automatizácia bude prípadne nutné upraviť. Router ani iné integrácie neodstráni.",
+          "traffic_source_unit": "Nastavte až po overení proti SRM. Výstup tabuľky bude vždy KB/s (1000 B/s). Neoverené rýchlosti zostanú prázdne.",
+          "traffic_rx_direction": "Download a upload sa vzťahujú ku klientovi. Kým nie je smer overený, pôvodné RX/TX sú iba v podrobnostiach."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} – pripojenie"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – prítomnosť"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Známi klienti v SRM"
+      },
+      "clients_online": {
+        "name": "Online klienti"
+      },
+      "clients_offline": {
+        "name": "Offline klienti"
+      },
+      "clients_wifi": {
+        "name": "Online Wi-Fi klienti"
+      },
+      "clients_lan": {
+        "name": "Online LAN klienti"
+      },
+      "clients_guest": {
+        "name": "Online hostia"
+      },
+      "wan_ipv4": {
+        "name": "Stav WAN IPv4 podľa SRM"
+      },
+      "wan_ipv6": {
+        "name": "Stav WAN IPv6 podľa SRM"
+      },
+      "cpu_total": {
+        "name": "CPU – celkové využitie"
+      },
+      "cpu_user": {
+        "name": "CPU – užívateľské zaťaženie"
+      },
+      "cpu_system": {
+        "name": "CPU – systémové zaťaženie"
+      },
+      "cpu_other": {
+        "name": "CPU - ostatné zaťaženie"
+      },
+      "ram_calculated": {
+        "name": "RAM – využitie bez cache a bufferov"
+      },
+      "ram_usage": {
+        "name": "Využitie RAM podľa SRM"
+      },
+      "swap_usage": {
+        "name": "Využitie swapu podľa SRM"
+      },
+      "mesh_nodes": {
+        "name": "Počet uzlov mesh"
+      },
+      "network_interfaces": {
+        "name": "Počet sieťových rozhraní"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Zatiaľ neoverené",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Zatiaľ neoverené",
+        "download": "RX = download klienta, TX = upload",
+        "upload": "RX = upload klienta, TX = download"
+      }
+    }
+  }
+}

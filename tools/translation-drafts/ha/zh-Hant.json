@@ -1,0 +1,174 @@
+{
+  "title": "Synology SRM 擴充",
+  "config": {
+    "step": {
+      "user": {
+        "title": "連接 Synology RT6600ax",
+        "description": "建立具有摘要和客戶端清單的路由器設備。客戶端實體是可選的。 WOL 僅手動發送。我們建議使用 HTTPS 和憑證驗證。",
+        "data": {
+          "host": "IP 位址或主機名",
+          "port": "SRM連接埠",
+          "https": "使用 HTTPS",
+          "verify_ssl": "驗證 TLS 證書",
+          "username": "使用者名稱 SRM",
+          "password": "SRM密碼"
+        },
+        "data_description": {
+          "host": "沒有 https://、連接埠或路徑。",
+          "port": "通常，HTTPS 為 8001，HTTP 為 8000。",
+          "verify_ssl": "停用是不受信任的本機憑證的明確選項。"
+        }
+      },
+      "reauth_confirm": {
+        "title": "恢復 SRM 登入",
+        "description": "輸入同一路由器的目前資料。客戶身分將被保留。",
+        "data": {
+          "host": "IP 位址或主機名",
+          "port": "SRM連接埠",
+          "https": "使用 HTTPS",
+          "verify_ssl": "驗證 TLS 證書",
+          "username": "使用者名稱 SRM",
+          "password": "SRM密碼"
+        }
+      },
+      "reconfigure": {
+        "title": "變更連接到同一路由器",
+        "description": "更改 IP 或登入詳細資訊時使用。配置的標識將保持不變。",
+        "data": {
+          "host": "IP 位址或主機名",
+          "port": "SRM連接埠",
+          "https": "使用 HTTPS",
+          "verify_ssl": "驗證 TLS 證書",
+          "username": "使用者名稱 SRM",
+          "password": "SRM密碼"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "無法連線到 SRM。檢查路由器的位址、連接埠和可用性。",
+      "invalid_host": "僅輸入 IP 位址或主機名，不輸入協定、連接埠和路徑。",
+      "invalid_auth": "登入 SRM 失敗。驗證帳戶詳細資料和權限。",
+      "permission_denied": "該帳號沒有讀取路由器客戶端的權限。",
+      "invalid_certificate": "無法驗證證書。驗證主機名稱和憑證；只能有意識地關閉身份驗證。",
+      "two_factor_required": "SRM 需要額外的登入因素。整合尚不支援此流程。不要自動關閉 2FA。",
+      "unsupported_api": "路由器不支援所需的客戶端 API v5。",
+      "unsupported_response": "客戶端 API 傳回不同的結構。依照指示執行 tools/probe.py 本機診斷。不需要開發工具。"
+    },
+    "abort": {
+      "single_instance_allowed": "此版本支援一台路由器。若要變更位址，請使用現有整合的重新配置。",
+      "already_configured": "路由器已經設定好了。",
+      "reauth_successful": "登入已恢復。",
+      "reconfigure_successful": "連接設定已更改。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "路由器下的客戶端",
+        "description": "客戶端間隔可以設定為 5 秒（預設 30 秒）。所有客戶端的表仍保留在路由器中。選定的客戶端實體和追蹤器位於此整合下的整合式客戶端設備中。",
+        "data": {
+          "poll_interval": "客戶端讀取間隔（秒）",
+          "create_clients": "允許選取的實體連接",
+          "create_trackers": "建立出勤追蹤器",
+          "tracker_clients": "擁有追蹤器的客戶",
+          "collect_diagnostics": "收集擴展診斷信息",
+          "client_entities": "具有單獨連線實體的用戶端",
+          "remove_unselected": "刪除此整合的未選取的客戶端實體",
+          "traffic_source_unit": "以路由器速度驗證輸入單元",
+          "traffic_rx_direction": "驗證 RX 接收的意義"
+        },
+        "data_description": {
+          "tracker_clients": "此選擇將開啟整合式客戶端設備中的追蹤器。空選擇意味著沒有追蹤器。",
+          "poll_interval": "5 至 3600 秒。預設值為 30。5 秒錶示每分鐘 12 個查詢；這些都不是立即發生的事件。",
+          "client_entities": "空選擇不會建立任何客戶端實體。所有客戶端的清單將保留在路由器中。",
+          "remove_unselected": "它還會清理 0.1.0 版本自動建立的實體。從 HA 註冊表中刪除未選定的實體及其設定；他們的自動化可能需要修改。它不會刪除路由器或其他整合。",
+          "traffic_source_unit": "僅在針對 SRM 進行驗證後設定。表輸出將始終為 KB/s (1000 B/s)。未經驗證的速度將保留為空白。",
+          "traffic_rx_direction": "下載和上傳參考客戶端。在驗證方向之前，原始的 RX/TX 只是細節。"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client}——連接"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – 存在"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "SRM知名客戶"
+      },
+      "clients_online": {
+        "name": "線上客戶"
+      },
+      "clients_offline": {
+        "name": "線下客戶"
+      },
+      "clients_wifi": {
+        "name": "線上 Wi-Fi 用戶端"
+      },
+      "clients_lan": {
+        "name": "線上區域網路用戶端"
+      },
+      "clients_guest": {
+        "name": "線上嘉賓"
+      },
+      "wan_ipv4": {
+        "name": "SRM 的 IPv4 WAN 狀態"
+      },
+      "wan_ipv6": {
+        "name": "SRM 的 IPv6 WAN 狀態"
+      },
+      "cpu_total": {
+        "name": "CPU - 總使用量"
+      },
+      "cpu_user": {
+        "name": "CPU-用戶負載"
+      },
+      "cpu_system": {
+        "name": "CPU-系統負載"
+      },
+      "cpu_other": {
+        "name": "CPU-其他負載"
+      },
+      "ram_calculated": {
+        "name": "RAM - 不使用快取和緩衝區"
+      },
+      "ram_usage": {
+        "name": "SRM 的 RAM 使用情況"
+      },
+      "swap_usage": {
+        "name": "根據SRM使用交換"
+      },
+      "mesh_nodes": {
+        "name": "網格節點數"
+      },
+      "network_interfaces": {
+        "name": "網路介面數量"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "尚未驗證",
+        "B/s": "銀行/秒",
+        "KB/s": "KB/秒（1000 B/秒）",
+        "KiB/s": "KiB/秒（1024 B/秒）",
+        "bit/s": "位元/秒"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "尚未驗證",
+        "download": "RX=客戶端下載，TX=上傳",
+        "upload": "RX=客戶端上傳，TX=下載"
+      }
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "title": "Synology SRM uitgebreid",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Verbinding maken met Synology RT6600ax",
+        "description": "Creëert een routerapparaat met samenvattingen en een lijst met clients. Klantentiteiten zijn optioneel. WOL wordt alleen handmatig verzonden. We raden HTTPS en certificaatverificatie aan.",
+        "data": {
+          "host": "IP-adres of hostnaam",
+          "port": "SRM-poort",
+          "https": "Gebruik HTTPS",
+          "verify_ssl": "Controleer het TLS-certificaat",
+          "username": "Gebruikersnaam SRM",
+          "password": "SRM-wachtwoord"
+        },
+        "data_description": {
+          "host": "Geen https://, poort of pad.",
+          "port": "Meestal 8001 voor HTTPS of 8000 voor HTTP.",
+          "verify_ssl": "Uitschakelen is een expliciete optie voor een niet-vertrouwd lokaal certificaat."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Herstel de aanmelding bij SRM",
+        "description": "Voer de huidige gegevens van dezelfde router in. De identiteit van de klant blijft behouden.",
+        "data": {
+          "host": "IP-adres of hostnaam",
+          "port": "SRM-poort",
+          "https": "Gebruik HTTPS",
+          "verify_ssl": "Controleer het TLS-certificaat",
+          "username": "Gebruikersnaam SRM",
+          "password": "SRM-wachtwoord"
+        }
+      },
+      "reconfigure": {
+        "title": "Wijzig de verbinding met dezelfde router",
+        "description": "Gebruiken bij het wijzigen van IP- of inloggegevens. De identiteit van de configuratie blijft hetzelfde.",
+        "data": {
+          "host": "IP-adres of hostnaam",
+          "port": "SRM-poort",
+          "https": "Gebruik HTTPS",
+          "verify_ssl": "Controleer het TLS-certificaat",
+          "username": "Gebruikersnaam SRM",
+          "password": "SRM-wachtwoord"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken met SRM. Controleer het adres, de poort en de beschikbaarheid van de router.",
+      "invalid_host": "Voer alleen het IP-adres of de hostnaam in, zonder protocol, poort en pad.",
+      "invalid_auth": "Aanmelden bij SRM is mislukt. Controleer accountgegevens en machtigingen.",
+      "permission_denied": "Het account heeft geen toestemming om routerclients te lezen.",
+      "invalid_certificate": "Het certificaat kan niet worden geverifieerd. Controleer de hostnaam en het certificaat; schakel authenticatie alleen bewust uit.",
+      "two_factor_required": "SRM vereist een extra inlogfactor. Deze stroom wordt nog niet ondersteund door de integratie. Schakel 2FA niet automatisch uit.",
+      "unsupported_api": "De router ondersteunt de vereiste client-API v5.",
+      "unsupported_response": "De client-API retourneert een andere structuur. Voer de lokale diagnostiek van tools/probe.py uit volgens de instructies. DevTools zijn niet nodig."
+    },
+    "abort": {
+      "single_instance_allowed": "Deze versie ondersteunt één router. Om het adres te wijzigen, gebruikt u Opnieuw configureren met een bestaande integratie.",
+      "already_configured": "De router is al geconfigureerd.",
+      "reauth_successful": "Inloggen is hersteld.",
+      "reconfigure_successful": "De verbindingsinstellingen zijn gewijzigd."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Clients onder de router",
+        "description": "Het clientinterval kan worden ingesteld vanaf 5 seconden (standaard 30 s). De tabel met alle clients blijft bij de router. De geselecteerde cliententiteiten en trackers bevinden zich onder deze integratie in het Integrated Clients-apparaat.",
+        "data": {
+          "poll_interval": "Klantleesinterval in seconden",
+          "create_clients": "Sta toe dat de geselecteerde entiteiten verbinding maken",
+          "create_trackers": "Aanwezigheidstrackers maken",
+          "tracker_clients": "Klanten met een tracker",
+          "collect_diagnostics": "Verzamel uitgebreide diagnostiek",
+          "client_entities": "Clients met een aparte verbindingsentiteit",
+          "remove_unselected": "Verwijder niet-geselecteerde klantentiteiten van deze integratie",
+          "traffic_source_unit": "Geverifieerde invoereenheid op routersnelheid",
+          "traffic_rx_direction": "Geverifieerde betekenis van RX-ontvangst"
+        },
+        "data_description": {
+          "tracker_clients": "Met deze selectie wordt de tracker op het Integrated Clients-apparaat ingeschakeld. Een lege selectie betekent geen trackers.",
+          "poll_interval": "5 tot 3600 seconden. De standaardwaarde is 30. Vijf seconden betekent 12 zoekopdrachten per minuut; dit zijn geen onmiddellijke gebeurtenissen.",
+          "client_entities": "Een lege selectie creëert geen cliententiteiten. De lijst met alle clients blijft bij de router.",
+          "remove_unselected": "Het zal ook entiteiten opschonen die automatisch zijn aangemaakt door versie 0.1.0. Verwijdert niet-geselecteerde entiteiten en hun instellingen uit het HA-register; hun automatisering moet mogelijk worden aangepast. De router of andere integraties worden niet verwijderd.",
+          "traffic_source_unit": "Alleen instellen na validatie tegen SRM. De tabeluitvoer is altijd KB/s (1000 B/s). Niet-geverifieerde snelheden blijven leeg.",
+          "traffic_rx_direction": "Downloaden en uploaden verwijzen naar de client. Totdat de richting is geverifieerd, zijn de originele RX/TX slechts in details weergegeven."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - verbinding"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – aanwezigheid"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Bekende klanten in SRM"
+      },
+      "clients_online": {
+        "name": "Online klanten"
+      },
+      "clients_offline": {
+        "name": "Offline klanten"
+      },
+      "clients_wifi": {
+        "name": "Online Wi-Fi-clients"
+      },
+      "clients_lan": {
+        "name": "Online LAN-clients"
+      },
+      "clients_guest": {
+        "name": "Online gasten"
+      },
+      "wan_ipv4": {
+        "name": "IPv4 WAN-status door SRM"
+      },
+      "wan_ipv6": {
+        "name": "IPv6 WAN-status volgens SRM"
+      },
+      "cpu_total": {
+        "name": "CPU - totaal gebruik"
+      },
+      "cpu_user": {
+        "name": "CPU - gebruikersbelasting"
+      },
+      "cpu_system": {
+        "name": "CPU - systeembelasting"
+      },
+      "cpu_other": {
+        "name": "CPU - andere belastingen"
+      },
+      "ram_calculated": {
+        "name": "RAM - gebruik zonder cache en buffers"
+      },
+      "ram_usage": {
+        "name": "RAM-gebruik door SRM"
+      },
+      "swap_usage": {
+        "name": "Gebruik van swap volgens SRM"
+      },
+      "mesh_nodes": {
+        "name": "Het aantal meshknooppunten"
+      },
+      "network_interfaces": {
+        "name": "Aantal netwerkinterfaces"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Nog niet geverifieerd",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Nog niet geverifieerd",
+        "download": "RX = clientdownload, TX = upload",
+        "upload": "RX = clientupload, TX = downloaden"
+      }
+    }
+  }
+}

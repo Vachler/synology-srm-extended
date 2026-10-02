@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Synology RT6600ax",
+        "description": "Creates a router device with summaries and a list of clients. Client entities are optional. WOL is only sent manually. We recommend HTTPS and certificate verification.",
+        "data": {
+          "host": "IP address or hostname",
+          "port": "SRM port",
+          "https": "Use HTTPS",
+          "verify_ssl": "Verify TLS certificate",
+          "username": "SRM username",
+          "password": "SRM password"
+        },
+        "data_description": {
+          "host": "No https://, port or path.",
+          "port": "Usually 8001 for HTTPS or 8000 for HTTP.",
+          "verify_ssl": "Disable is an explicit option for an untrusted local certificate."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Restore login to SRM",
+        "description": "Enter the current data of the same router. Client identities will be preserved.",
+        "data": {
+          "host": "IP address or hostname",
+          "port": "SRM port",
+          "https": "Use HTTPS",
+          "verify_ssl": "Verify TLS certificate",
+          "username": "SRM username",
+          "password": "SRM password"
+        }
+      },
+      "reconfigure": {
+        "title": "Change the connection to the same router",
+        "description": "Use when changing IP or login details. The identity of the configuration will remain the same.",
+        "data": {
+          "host": "IP address or hostname",
+          "port": "SRM port",
+          "https": "Use HTTPS",
+          "verify_ssl": "Verify TLS certificate",
+          "username": "SRM username",
+          "password": "SRM password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to SRM. Check the address, port and availability of the router.",
+      "invalid_host": "Enter only IP address or hostname, without protocol, port and path.",
+      "invalid_auth": "Login to SRM failed. Verify account details and permissions.",
+      "permission_denied": "The account does not have permission to read router clients.",
+      "invalid_certificate": "The certificate cannot be verified. Verify the hostname and certificate; only consciously turn off authentication.",
+      "two_factor_required": "SRM requires an additional login factor. This flow is not yet supported by the integration. Don't turn off 2FA automatically.",
+      "unsupported_api": "The router does not support the required client API v5.",
+      "unsupported_response": "The client API returns a different structure. Run tools/probe.py local diagnostics as instructed. DevTools are not needed."
+    },
+    "abort": {
+      "single_instance_allowed": "This version supports one router. To change the address, use Reconfigure with an existing integration.",
+      "already_configured": "The router is already configured.",
+      "reauth_successful": "Login has been restored.",
+      "reconfigure_successful": "The connection settings have been changed."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Router clients",
+        "description": "The client interval can be set from 5 seconds (default 30 s). The table of all clients remains with the router. The selected client entities and trackers are in the Integrated Clients device under this integration.",
+        "data": {
+          "poll_interval": "Client read interval in seconds",
+          "create_clients": "Allow the selected entities to connect",
+          "create_trackers": "Create attendance trackers",
+          "tracker_clients": "Clients with a tracker",
+          "client_entities": "Clients with a separate connection entity",
+          "remove_unselected": "Remove unselected client entities of this integration",
+          "traffic_source_unit": "Verified input unit at router speed",
+          "traffic_rx_direction": "Verified significance of RX reception"
+        },
+        "data_description": {
+          "tracker_clients": "The selection turns on the tracker in the Integrated Clients device. An empty selection means no trackers.",
+          "poll_interval": "5 to 3600 seconds. Default value is 30. Five seconds means 12 queries per minute; these are not immediate events.",
+          "client_entities": "An empty selection will not create any client entities. The list of all clients will remain with the router.",
+          "remove_unselected": "It will also clean up entities automatically created by version 0.1.0. Removes unselected entities and their settings from the HA registry; their automation may need to be modified. It will not remove the router or other integrations.",
+          "traffic_source_unit": "Set only after validating against SRM. The table output will always be KB/s (1000 B/s). Unverified speeds will remain blank.",
+          "traffic_rx_direction": "Download and upload refer to the client. Until the direction is verified, the original RX/TX are only in details."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - connection"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – presence"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Well-known clients in SRM"
+      },
+      "clients_online": {
+        "name": "Online clients"
+      },
+      "clients_offline": {
+        "name": "Offline clients"
+      },
+      "clients_wifi": {
+        "name": "Online Wi-Fi clients"
+      },
+      "clients_lan": {
+        "name": "Online LAN clients"
+      },
+      "clients_guest": {
+        "name": "Online guests"
+      },
+      "wan_ipv4": {
+        "name": "IPv4 WAN status by SRM"
+      },
+      "wan_ipv6": {
+        "name": "IPv6 WAN status by SRM"
+      },
+      "cpu_total": {
+        "name": "CPU – total usage"
+      },
+      "cpu_user": {
+        "name": "CPU – user usage"
+      },
+      "cpu_system": {
+        "name": "CPU – system usage"
+      },
+      "cpu_other": {
+        "name": "CPU – other usage"
+      },
+      "ram_calculated": {
+        "name": "RAM – usage excluding cache and buffers"
+      },
+      "ram_usage": {
+        "name": "RAM usage reported by SRM"
+      },
+      "swap_usage": {
+        "name": "Swap usage reported by SRM"
+      },
+      "mesh_nodes": {
+        "name": "Mesh node count"
+      },
+      "network_interfaces": {
+        "name": "Network interface count"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Not yet verified",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Not yet verified",
+        "download": "RX = client download, TX = upload",
+        "upload": "RX = client upload, TX = download"
+      }
+    }
+  }
+}

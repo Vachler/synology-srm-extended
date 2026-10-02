@@ -1,0 +1,174 @@
+{
+  "title": "Synology SRM 확장",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Synology RT6600ax에 연결",
+        "description": "요약 및 클라이언트 목록이 포함된 라우터 장치를 만듭니다. 클라이언트 엔터티는 선택 사항입니다. WOL은 수동으로만 전송됩니다. HTTPS 및 인증서 확인을 권장합니다.",
+        "data": {
+          "host": "IP 주소 또는 호스트 이름",
+          "port": "SRM 포트",
+          "https": "HTTPS 사용",
+          "verify_ssl": "TLS 인증서 확인",
+          "username": "사용자 이름 SRM",
+          "password": "SRM 비밀번호"
+        },
+        "data_description": {
+          "host": "https://, 포트 또는 경로가 없습니다.",
+          "port": "일반적으로 HTTPS의 경우 8001, HTTP의 경우 8000입니다.",
+          "verify_ssl": "비활성화는 신뢰할 수 없는 로컬 인증서에 대한 명시적 옵션입니다."
+        }
+      },
+      "reauth_confirm": {
+        "title": "SRM에 대한 로그인 복원",
+        "description": "동일한 라우터의 현재 데이터를 입력하세요. 클라이언트 신원은 보존됩니다.",
+        "data": {
+          "host": "IP 주소 또는 호스트 이름",
+          "port": "SRM 포트",
+          "https": "HTTPS 사용",
+          "verify_ssl": "TLS 인증서 확인",
+          "username": "사용자 이름 SRM",
+          "password": "SRM 비밀번호"
+        }
+      },
+      "reconfigure": {
+        "title": "동일한 라우터로 연결을 변경하세요.",
+        "description": "IP나 로그인 정보를 변경할 때 사용하세요. 구성의 ID는 동일하게 유지됩니다.",
+        "data": {
+          "host": "IP 주소 또는 호스트 이름",
+          "port": "SRM 포트",
+          "https": "HTTPS 사용",
+          "verify_ssl": "TLS 인증서 확인",
+          "username": "사용자 이름 SRM",
+          "password": "SRM 비밀번호"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "SRM에 연결할 수 없습니다. 라우터의 주소, 포트 및 가용성을 확인하십시오.",
+      "invalid_host": "프로토콜, 포트, 경로 없이 IP 주소나 호스트 이름만 입력하세요.",
+      "invalid_auth": "SRM에 로그인하지 못했습니다. 계정 세부정보 및 권한을 확인하세요.",
+      "permission_denied": "계정에 라우터 클라이언트를 읽을 수 있는 권한이 없습니다.",
+      "invalid_certificate": "인증서를 확인할 수 없습니다. 호스트 이름과 인증서를 확인하세요. 의식적으로 인증을 끄기만 하면 됩니다.",
+      "two_factor_required": "SRM에는 추가 로그인 요소가 필요합니다. 이 흐름은 아직 통합에서 지원되지 않습니다. 2FA를 자동으로 끄지 마세요.",
+      "unsupported_api": "라우터는 필수 클라이언트 API v5를 지원하지 않습니다.",
+      "unsupported_response": "클라이언트 API는 다른 구조를 반환합니다. 지시에 따라 tools/probe.py 로컬 진단을 실행하십시오. DevTools는 필요하지 않습니다."
+    },
+    "abort": {
+      "single_instance_allowed": "이 버전은 하나의 라우터를 지원합니다. 주소를 변경하려면 기존 통합으로 재구성을 사용하세요.",
+      "already_configured": "라우터가 이미 구성되어 있습니다.",
+      "reauth_successful": "로그인이 복원되었습니다.",
+      "reconfigure_successful": "연결 설정이 변경되었습니다."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "라우터 아래의 클라이언트",
+        "description": "클라이언트 간격은 5초(기본값 30초)에서 설정할 수 있습니다. 모든 클라이언트의 테이블은 라우터에 남아 있습니다. 선택한 클라이언트 엔터티 및 추적기는 이 통합 아래의 통합 클라이언트 장치에 있습니다.",
+        "data": {
+          "poll_interval": "클라이언트 읽기 간격(초)",
+          "create_clients": "선택한 엔터티의 연결을 허용합니다.",
+          "create_trackers": "출석 추적기 만들기",
+          "tracker_clients": "추적기를 사용하는 클라이언트",
+          "collect_diagnostics": "확장된 진단 수집",
+          "client_entities": "별도의 연결 엔터티가 있는 클라이언트",
+          "remove_unselected": "이 통합의 선택되지 않은 클라이언트 항목 삭제",
+          "traffic_source_unit": "라우터 속도에서 검증된 입력 장치",
+          "traffic_rx_direction": "RX 수신의 중요성 확인"
+        },
+        "data_description": {
+          "tracker_clients": "선택하면 통합 클라이언트 장치의 추적기가 켜집니다. 비어 있는 선택은 추적기가 없음을 의미합니다.",
+          "poll_interval": "5~3600초. 기본값은 30입니다. 5초는 분당 12개의 쿼리를 의미합니다. 이는 즉각적인 사건이 아닙니다.",
+          "client_entities": "빈 선택은 클라이언트 엔터티를 생성하지 않습니다. 모든 클라이언트 목록은 라우터에 남아 있습니다.",
+          "remove_unselected": "또한 버전 0.1.0에서 자동으로 생성된 엔터티를 정리합니다. HA 레지스트리에서 선택되지 않은 엔터티와 해당 설정을 제거합니다. 자동화를 수정해야 할 수도 있습니다. 라우터나 기타 통합은 제거되지 않습니다.",
+          "traffic_source_unit": "SRM에 대해 검증한 후에만 설정하십시오. 테이블 출력은 항상 KB/s(1000B/s)입니다. 확인되지 않은 속도는 공백으로 유지됩니다.",
+          "traffic_rx_direction": "다운로드 및 업로드는 클라이언트를 참조하세요. 방향이 확인될 때까지 원래 RX/TX는 세부 사항에만 있습니다."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - 연결"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – 존재"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "SRM의 잘 알려진 클라이언트"
+      },
+      "clients_online": {
+        "name": "온라인 클라이언트"
+      },
+      "clients_offline": {
+        "name": "오프라인 클라이언트"
+      },
+      "clients_wifi": {
+        "name": "온라인 Wi-Fi 클라이언트"
+      },
+      "clients_lan": {
+        "name": "온라인 LAN 클라이언트"
+      },
+      "clients_guest": {
+        "name": "온라인 손님"
+      },
+      "wan_ipv4": {
+        "name": "SRM의 IPv4 WAN 상태"
+      },
+      "wan_ipv6": {
+        "name": "SRM별 IPv6 WAN 상태"
+      },
+      "cpu_total": {
+        "name": "CPU - 총 사용량"
+      },
+      "cpu_user": {
+        "name": "CPU - 사용자 로드"
+      },
+      "cpu_system": {
+        "name": "CPU - 시스템 로드"
+      },
+      "cpu_other": {
+        "name": "CPU - 기타 부하"
+      },
+      "ram_calculated": {
+        "name": "RAM - 캐시 및 버퍼 없이 사용"
+      },
+      "ram_usage": {
+        "name": "SRM의 RAM 사용량"
+      },
+      "swap_usage": {
+        "name": "SRM에 따른 스왑 사용"
+      },
+      "mesh_nodes": {
+        "name": "메쉬 노드 수"
+      },
+      "network_interfaces": {
+        "name": "네트워크 인터페이스 수"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "아직 확인되지 않음",
+        "B/s": "B/초",
+        "KB/s": "KB/초(1000B/초)",
+        "KiB/s": "KiB/초(1024B/초)",
+        "bit/s": "비트/초"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "아직 확인되지 않음",
+        "download": "RX = 클라이언트 다운로드, TX = 업로드",
+        "upload": "RX = 클라이언트 업로드, TX = 다운로드"
+      }
+    }
+  }
+}

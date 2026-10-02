@@ -1,0 +1,174 @@
+{
+  "title": "Sinologi SRM Diperluas",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Menghubungkan ke Synology RT6600ax",
+        "description": "Membuat perangkat router dengan ringkasan dan daftar klien. Entitas klien bersifat opsional. WOL hanya dikirim secara manual. Kami merekomendasikan HTTPS dan verifikasi sertifikat.",
+        "data": {
+          "host": "Alamat IP atau nama host",
+          "port": "Pelabuhan SRM",
+          "https": "Gunakan HTTPS",
+          "verify_ssl": "Verifikasi sertifikat TLS",
+          "username": "Nama pengguna SRM",
+          "password": "kata sandi SRM"
+        },
+        "data_description": {
+          "host": "Tidak ada https://, port atau jalur.",
+          "port": "Biasanya 8001 untuk HTTPS atau 8000 untuk HTTP.",
+          "verify_ssl": "Nonaktifkan adalah opsi eksplisit untuk sertifikat lokal yang tidak tepercaya."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Pulihkan login ke SRM",
+        "description": "Masukkan data terkini dari router yang sama. Identitas klien akan dipertahankan.",
+        "data": {
+          "host": "Alamat IP atau nama host",
+          "port": "Pelabuhan SRM",
+          "https": "Gunakan HTTPS",
+          "verify_ssl": "Verifikasi sertifikat TLS",
+          "username": "Nama pengguna SRM",
+          "password": "kata sandi SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "Ubah koneksi ke router yang sama",
+        "description": "Gunakan saat mengubah IP atau detail login. Identitas konfigurasi akan tetap sama.",
+        "data": {
+          "host": "Alamat IP atau nama host",
+          "port": "Pelabuhan SRM",
+          "https": "Gunakan HTTPS",
+          "verify_ssl": "Verifikasi sertifikat TLS",
+          "username": "Nama pengguna SRM",
+          "password": "kata sandi SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Tidak dapat terhubung ke SRM. Periksa alamat, port dan ketersediaan router.",
+      "invalid_host": "Masukkan hanya alamat IP atau nama host, tanpa protokol, port, dan jalur.",
+      "invalid_auth": "Gagal masuk ke SRM. Verifikasi detail dan izin akun.",
+      "permission_denied": "Akun tersebut tidak memiliki izin untuk membaca klien router.",
+      "invalid_certificate": "Sertifikat tidak dapat diverifikasi. Verifikasi nama host dan sertifikat; hanya secara sadar mematikan otentikasi.",
+      "two_factor_required": "SRM memerlukan faktor login tambahan. Aliran ini belum didukung oleh integrasi. Jangan matikan 2FA secara otomatis.",
+      "unsupported_api": "Router tidak mendukung API klien v5 yang diperlukan.",
+      "unsupported_response": "API klien mengembalikan struktur yang berbeda. Jalankan diagnostik lokal tools/probe.py seperti yang diinstruksikan. DevTools tidak diperlukan."
+    },
+    "abort": {
+      "single_instance_allowed": "Versi ini mendukung satu router. Untuk mengubah alamat, gunakan Konfigurasi Ulang dengan integrasi yang sudah ada.",
+      "already_configured": "Router sudah dikonfigurasi.",
+      "reauth_successful": "Login telah dipulihkan.",
+      "reconfigure_successful": "Pengaturan koneksi telah diubah."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Klien di bawah router",
+        "description": "Interval klien dapat diatur mulai 5 detik (default 30 detik). Tabel semua klien tetap ada pada router. Entitas dan pelacak klien yang dipilih berada di perangkat Klien Terintegrasi dalam integrasi ini.",
+        "data": {
+          "poll_interval": "Interval baca klien dalam hitungan detik",
+          "create_clients": "Izinkan entitas yang dipilih untuk terhubung",
+          "create_trackers": "Buat pelacak kehadiran",
+          "tracker_clients": "Klien dengan pelacak",
+          "collect_diagnostics": "Kumpulkan diagnostik yang diperluas",
+          "client_entities": "Klien dengan entitas koneksi terpisah",
+          "remove_unselected": "Hapus entitas klien yang tidak dipilih dari integrasi ini",
+          "traffic_source_unit": "Unit input terverifikasi pada kecepatan router",
+          "traffic_rx_direction": "Signifikansi penerimaan RX yang terverifikasi"
+        },
+        "data_description": {
+          "tracker_clients": "Pilihan tersebut mengaktifkan pelacak di perangkat Klien Terintegrasi. Pilihan kosong berarti tidak ada pelacak.",
+          "poll_interval": "5 hingga 3600 detik. Nilai defaultnya adalah 30. Lima detik berarti 12 kueri per menit; ini bukanlah peristiwa yang terjadi dalam waktu dekat.",
+          "client_entities": "Pilihan kosong tidak akan membuat entitas klien apa pun. Daftar semua klien akan tetap ada pada router.",
+          "remove_unselected": "Ini juga akan membersihkan entitas yang dibuat secara otomatis oleh versi 0.1.0. Menghapus entitas yang tidak dipilih dan pengaturannya dari registri HA; otomatisasi mereka mungkin perlu dimodifikasi. Itu tidak akan menghapus router atau integrasi lainnya.",
+          "traffic_source_unit": "Tetapkan hanya setelah memvalidasi terhadap SRM. Output tabel akan selalu KB/s (1000 B/s). Kecepatan yang belum diverifikasi akan tetap kosong.",
+          "traffic_rx_direction": "Unduh dan unggah merujuk ke klien. Sampai arahnya terverifikasi, RX/TX asli hanya sebatas detailnya."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - koneksi"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – kehadiran"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Klien terkenal di SRM"
+      },
+      "clients_online": {
+        "name": "Klien daring"
+      },
+      "clients_offline": {
+        "name": "Klien offline"
+      },
+      "clients_wifi": {
+        "name": "Klien Wi-Fi daring"
+      },
+      "clients_lan": {
+        "name": "Klien LAN daring"
+      },
+      "clients_guest": {
+        "name": "Tamu daring"
+      },
+      "wan_ipv4": {
+        "name": "Status WAN IPv4 oleh SRM"
+      },
+      "wan_ipv6": {
+        "name": "Status WAN IPv6 oleh SRM"
+      },
+      "cpu_total": {
+        "name": "CPU - total penggunaan"
+      },
+      "cpu_user": {
+        "name": "CPU - beban pengguna"
+      },
+      "cpu_system": {
+        "name": "CPU - beban sistem"
+      },
+      "cpu_other": {
+        "name": "CPU - beban lainnya"
+      },
+      "ram_calculated": {
+        "name": "RAM - gunakan tanpa cache dan buffer"
+      },
+      "ram_usage": {
+        "name": "Penggunaan RAM oleh SRM"
+      },
+      "swap_usage": {
+        "name": "Penggunaan swap menurut SRM"
+      },
+      "mesh_nodes": {
+        "name": "Jumlah node mesh"
+      },
+      "network_interfaces": {
+        "name": "Jumlah antarmuka jaringan"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Belum diverifikasi",
+        "B/s": "B/s",
+        "KB/s": "KB/dtk (1000 B/dtk)",
+        "KiB/s": "KiB/dtk (1024 B/dtk)",
+        "bit/s": "sedikit/dtk"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Belum diverifikasi",
+        "download": "RX = unduhan klien, TX = unggah",
+        "upload": "RX = unggahan klien, TX = unduh"
+      }
+    }
+  }
+}

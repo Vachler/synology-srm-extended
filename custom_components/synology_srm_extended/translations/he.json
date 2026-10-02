@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "מתחבר ל-Synology RT6600ax",
+        "description": "יוצר מכשיר נתב עם סיכומים ורשימת לקוחות. ישויות לקוח הן אופציונליות. WOL נשלח רק ידנית. אנו ממליצים על HTTPS ואימות אישור.",
+        "data": {
+          "host": "כתובת IP או שם מארח",
+          "port": "יציאת SRM",
+          "https": "השתמש ב-HTTPS",
+          "verify_ssl": "אמת את אישור TLS",
+          "username": "שם משתמש SRM",
+          "password": "סיסמת SRM"
+        },
+        "data_description": {
+          "host": "אין https://, יציאה או נתיב.",
+          "port": "בדרך כלל 8001 עבור HTTPS או 8000 עבור HTTP.",
+          "verify_ssl": "השבתה היא אפשרות מפורשת עבור אישור מקומי לא מהימן."
+        }
+      },
+      "reauth_confirm": {
+        "title": "שחזר כניסה ל-SRM",
+        "description": "הזן את הנתונים הנוכחיים של אותו נתב. זהות הלקוח תישמר.",
+        "data": {
+          "host": "כתובת IP או שם מארח",
+          "port": "יציאת SRM",
+          "https": "השתמש ב-HTTPS",
+          "verify_ssl": "אמת את אישור TLS",
+          "username": "שם משתמש SRM",
+          "password": "סיסמת SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "שנה את החיבור לאותו נתב",
+        "description": "השתמש בעת שינוי IP או פרטי התחברות. זהות התצורה תישאר זהה.",
+        "data": {
+          "host": "כתובת IP או שם מארח",
+          "port": "יציאת SRM",
+          "https": "השתמש ב-HTTPS",
+          "verify_ssl": "אמת את אישור TLS",
+          "username": "שם משתמש SRM",
+          "password": "סיסמת SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "לא ניתן להתחבר ל-SRM. בדוק את הכתובת, היציאה והזמינות של הנתב.",
+      "invalid_host": "הזן רק כתובת IP או שם מארח, ללא פרוטוקול, יציאה ונתיב.",
+      "invalid_auth": "הכניסה ל-SRM נכשלה. אמת את פרטי החשבון וההרשאות.",
+      "permission_denied": "לחשבון אין הרשאה לקרוא לקוחות נתב.",
+      "invalid_certificate": "לא ניתן לאמת את האישור. אמת את שם המארח והתעודה; רק במודע לכבות את האימות.",
+      "two_factor_required": "SRM דורש גורם כניסה נוסף. זרימה זו אינה נתמכת עדיין על ידי האינטגרציה. אל תכבה את 2FA באופן אוטומטי.",
+      "unsupported_api": "הנתב אינו תומך ב-Client API v5 הנדרש.",
+      "unsupported_response": "ממשק API של הלקוח מחזיר מבנה שונה. הפעל את הכלים/probe.py אבחון מקומי לפי ההוראות. אין צורך בכלי DevTools."
+    },
+    "abort": {
+      "single_instance_allowed": "גרסה זו תומכת בנתב אחד. כדי לשנות את הכתובת, השתמש ב-Reconfigure עם אינטגרציה קיימת.",
+      "already_configured": "הנתב כבר מוגדר.",
+      "reauth_successful": "הכניסה שוחזרה.",
+      "reconfigure_successful": "הגדרות החיבור שונו."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "לקוחות מתחת לנתב",
+        "description": "ניתן להגדיר את מרווח הלקוח מ-5 שניות (ברירת מחדל 30 שניות). הטבלה של כל הלקוחות נשארת עם הנתב. ישויות הלקוח והעוקבים שנבחרו נמצאים במכשיר Integrated Clients תחת שילוב זה.",
+        "data": {
+          "poll_interval": "מרווח קריאה של הלקוח בשניות",
+          "create_clients": "אפשר לישויות שנבחרו להתחבר",
+          "create_trackers": "צור מעקבי נוכחות",
+          "tracker_clients": "לקוחות עם גשש",
+          "client_entities": "לקוחות עם ישות חיבור נפרדת",
+          "remove_unselected": "הסר ישויות לקוח שלא נבחרו מהשילוב הזה",
+          "traffic_source_unit": "יחידת קלט מאומתת במהירות הנתב",
+          "traffic_rx_direction": "משמעות מאומתת של קליטת RX"
+        },
+        "data_description": {
+          "tracker_clients": "הבחירה מפעילה את המעקב במכשיר Integrated Clients. בחירה ריקה פירושה ללא עוקבים.",
+          "poll_interval": "5 עד 3600 שניות. ערך ברירת המחדל הוא 30. חמש שניות אומרות 12 שאילתות בדקה; אלה אינם אירועים מיידיים.",
+          "client_entities": "בחירה ריקה לא תיצור ישויות לקוח. רשימת כל הלקוחות תישאר עם הנתב.",
+          "remove_unselected": "זה גם ינקה ישויות שנוצרו אוטומטית על ידי גרסה 0.1.0. מסיר ישויות שלא נבחרו וההגדרות שלהן מהרישום של HA; ייתכן שיהיה צורך לשנות את האוטומציה שלהם. זה לא יסיר את הנתב או אינטגרציות אחרות.",
+          "traffic_source_unit": "מוגדר רק לאחר אימות מול SRM. פלט הטבלה יהיה תמיד KB/s (1000 B/s). מהירויות לא מאומתות יישארו ריקות.",
+          "traffic_rx_direction": "הורדה והעלאה מתייחסים ללקוח. עד לאימות הכיוון, ה-RX/TX המקורי הם רק בפרטים."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - חיבור"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – נוכחות"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "לקוחות ידועים ב-SRM"
+      },
+      "clients_online": {
+        "name": "לקוחות מקוונים"
+      },
+      "clients_offline": {
+        "name": "לקוחות לא מקוונים"
+      },
+      "clients_wifi": {
+        "name": "לקוחות Wi-Fi מקוונים"
+      },
+      "clients_lan": {
+        "name": "לקוחות LAN מקוונים"
+      },
+      "clients_guest": {
+        "name": "אורחים מקוונים"
+      },
+      "wan_ipv4": {
+        "name": "מצב IPv4 WAN לפי SRM"
+      },
+      "wan_ipv6": {
+        "name": "מצב IPv6 WAN לפי SRM"
+      },
+      "cpu_total": {
+        "name": "מעבד - שימוש כולל"
+      },
+      "cpu_user": {
+        "name": "CPU - עומס משתמש"
+      },
+      "cpu_system": {
+        "name": "CPU - עומס מערכת"
+      },
+      "cpu_other": {
+        "name": "מעבד - עומסים אחרים"
+      },
+      "ram_calculated": {
+        "name": "זיכרון RAM - שימוש ללא מטמון ומאגרים"
+      },
+      "ram_usage": {
+        "name": "שימוש בזיכרון RAM על ידי SRM"
+      },
+      "swap_usage": {
+        "name": "שימוש בהחלפה לפי SRM"
+      },
+      "mesh_nodes": {
+        "name": "מספר צמתי הרשת"
+      },
+      "network_interfaces": {
+        "name": "מספר ממשקי רשת"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "עדיין לא מאומת",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "עדיין לא מאומת",
+        "download": "RX = הורדת לקוח, TX = העלאה",
+        "upload": "RX = העלאת לקוח, TX = הורדה"
+      }
+    }
+  }
+}

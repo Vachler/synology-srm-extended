@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Menyambung ke Synology RT6600ax",
+        "description": "Mencipta peranti penghala dengan ringkasan dan senarai pelanggan. Entiti pelanggan adalah pilihan. WOL hanya dihantar secara manual. Kami mengesyorkan HTTPS dan pengesahan sijil.",
+        "data": {
+          "host": "Alamat IP atau nama hos",
+          "port": "pelabuhan SRM",
+          "https": "Gunakan HTTPS",
+          "verify_ssl": "Sahkan sijil TLS",
+          "username": "Nama pengguna SRM",
+          "password": "kata laluan SRM"
+        },
+        "data_description": {
+          "host": "Tiada https://, port atau laluan.",
+          "port": "Biasanya 8001 untuk HTTPS atau 8000 untuk HTTP.",
+          "verify_ssl": "Lumpuhkan ialah pilihan yang jelas untuk sijil tempatan yang tidak dipercayai."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Pulihkan log masuk ke SRM",
+        "description": "Masukkan data semasa penghala yang sama. Identiti pelanggan akan dikekalkan.",
+        "data": {
+          "host": "Alamat IP atau nama hos",
+          "port": "pelabuhan SRM",
+          "https": "Gunakan HTTPS",
+          "verify_ssl": "Sahkan sijil TLS",
+          "username": "Nama pengguna SRM",
+          "password": "kata laluan SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "Tukar sambungan ke penghala yang sama",
+        "description": "Gunakan apabila menukar IP atau butiran log masuk. Identiti konfigurasi akan kekal sama.",
+        "data": {
+          "host": "Alamat IP atau nama hos",
+          "port": "pelabuhan SRM",
+          "https": "Gunakan HTTPS",
+          "verify_ssl": "Sahkan sijil TLS",
+          "username": "Nama pengguna SRM",
+          "password": "kata laluan SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Tidak dapat menyambung ke SRM. Semak alamat, port dan ketersediaan penghala.",
+      "invalid_host": "Masukkan hanya alamat IP atau nama hos, tanpa protokol, port dan laluan.",
+      "invalid_auth": "Log masuk ke SRM gagal. Sahkan butiran dan kebenaran akaun.",
+      "permission_denied": "Akaun tidak mempunyai kebenaran untuk membaca pelanggan penghala.",
+      "invalid_certificate": "Sijil tidak boleh disahkan. Sahkan nama hos dan sijil; hanya secara sedar mematikan pengesahan.",
+      "two_factor_required": "SRM memerlukan faktor log masuk tambahan. Aliran ini belum lagi disokong oleh penyepaduan. Jangan matikan 2FA secara automatik.",
+      "unsupported_api": "Penghala tidak menyokong API klien yang diperlukan v5.",
+      "unsupported_response": "API pelanggan mengembalikan struktur yang berbeza. Jalankan diagnostik tempatan tools/probe.py seperti yang diarahkan. DevTools tidak diperlukan."
+    },
+    "abort": {
+      "single_instance_allowed": "Versi ini menyokong satu penghala. Untuk menukar alamat, gunakan konfigurasi semula dengan penyepaduan sedia ada.",
+      "already_configured": "Penghala sudah dikonfigurasikan.",
+      "reauth_successful": "Log masuk telah dipulihkan.",
+      "reconfigure_successful": "Tetapan sambungan telah ditukar."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Pelanggan di bawah penghala",
+        "description": "Selang klien boleh ditetapkan dari 5 saat (lalai 30 s). Jadual semua pelanggan kekal dengan penghala. Entiti dan penjejak pelanggan yang dipilih berada dalam peranti Klien Bersepadu di bawah penyepaduan ini.",
+        "data": {
+          "poll_interval": "Selang bacaan pelanggan dalam beberapa saat",
+          "create_clients": "Benarkan entiti yang dipilih untuk menyambung",
+          "create_trackers": "Buat penjejak kehadiran",
+          "tracker_clients": "Pelanggan dengan penjejak",
+          "client_entities": "Pelanggan dengan entiti sambungan yang berasingan",
+          "remove_unselected": "Alih keluar entiti pelanggan yang tidak dipilih bagi penyepaduan ini",
+          "traffic_source_unit": "Unit input yang disahkan pada kelajuan penghala",
+          "traffic_rx_direction": "Kepentingan penerimaan RX yang disahkan"
+        },
+        "data_description": {
+          "tracker_clients": "Pemilihan menghidupkan penjejak dalam peranti Klien Bersepadu. Pilihan kosong bermakna tiada penjejak.",
+          "poll_interval": "5 hingga 3600 saat. Nilai lalai ialah 30. Lima saat bermakna 12 pertanyaan seminit; ini bukanlah peristiwa serta merta.",
+          "client_entities": "Pilihan kosong tidak akan mewujudkan sebarang entiti pelanggan. Senarai semua pelanggan akan kekal dengan penghala.",
+          "remove_unselected": "Ia juga akan membersihkan entiti yang dibuat secara automatik oleh versi 0.1.0. Mengalih keluar entiti yang tidak dipilih dan tetapannya daripada pendaftaran HA; automasi mereka mungkin perlu diubah suai. Ia tidak akan mengalih keluar penghala atau penyepaduan lain.",
+          "traffic_source_unit": "Tetapkan hanya selepas mengesahkan terhadap SRM. Output jadual akan sentiasa KB/s (1000 B/s). Kelajuan yang tidak disahkan akan kekal kosong.",
+          "traffic_rx_direction": "Muat turun dan muat naik merujuk kepada pelanggan. Sehingga arah itu disahkan, RX/TX asal hanya dalam butiran."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - sambungan"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – kehadiran"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Pelanggan terkenal di SRM"
+      },
+      "clients_online": {
+        "name": "Pelanggan dalam talian"
+      },
+      "clients_offline": {
+        "name": "Pelanggan luar talian"
+      },
+      "clients_wifi": {
+        "name": "Pelanggan Wi-Fi dalam talian"
+      },
+      "clients_lan": {
+        "name": "Pelanggan LAN dalam talian"
+      },
+      "clients_guest": {
+        "name": "Tetamu dalam talian"
+      },
+      "wan_ipv4": {
+        "name": "Status IPv4 WAN oleh SRM"
+      },
+      "wan_ipv6": {
+        "name": "Status WAN IPv6 oleh SRM"
+      },
+      "cpu_total": {
+        "name": "CPU - jumlah penggunaan"
+      },
+      "cpu_user": {
+        "name": "CPU - beban pengguna"
+      },
+      "cpu_system": {
+        "name": "CPU - beban sistem"
+      },
+      "cpu_other": {
+        "name": "CPU - beban lain"
+      },
+      "ram_calculated": {
+        "name": "RAM - gunakan tanpa cache dan penimbal"
+      },
+      "ram_usage": {
+        "name": "Penggunaan RAM oleh SRM"
+      },
+      "swap_usage": {
+        "name": "Penggunaan swap mengikut SRM"
+      },
+      "mesh_nodes": {
+        "name": "Bilangan nod mesh"
+      },
+      "network_interfaces": {
+        "name": "Bilangan antara muka rangkaian"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Belum disahkan",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Belum disahkan",
+        "download": "RX = muat turun klien, TX = muat naik",
+        "upload": "RX = muat naik pelanggan, TX = muat turun"
+      }
+    }
+  }
+}

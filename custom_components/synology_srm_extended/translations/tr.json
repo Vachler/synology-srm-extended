@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Synology RT6600ax'e bağlanma",
+        "description": "Özetleri ve istemci listesini içeren bir yönlendirici aygıtı oluşturur. İstemci varlıkları isteğe bağlıdır. WOL yalnızca manuel olarak gönderilir. HTTPS ve sertifika doğrulamasını öneririz.",
+        "data": {
+          "host": "IP adresi veya ana bilgisayar adı",
+          "port": "SRM bağlantı noktası",
+          "https": "HTTPS'yi kullan",
+          "verify_ssl": "TLS sertifikasını doğrulayın",
+          "username": "Kullanıcı adı SRM",
+          "password": "SRM şifresi"
+        },
+        "data_description": {
+          "host": "https://, bağlantı noktası veya yol yok.",
+          "port": "Genellikle HTTPS için 8001 veya HTTP için 8000.",
+          "verify_ssl": "Devre dışı bırak, güvenilmeyen bir yerel sertifika için açık bir seçenektir."
+        }
+      },
+      "reauth_confirm": {
+        "title": "SRM'de oturum açmayı geri yükle",
+        "description": "Aynı yönlendiricinin mevcut verilerini girin. Müşteri kimlikleri korunacaktır.",
+        "data": {
+          "host": "IP adresi veya ana bilgisayar adı",
+          "port": "SRM bağlantı noktası",
+          "https": "HTTPS'yi kullan",
+          "verify_ssl": "TLS sertifikasını doğrulayın",
+          "username": "Kullanıcı adı SRM",
+          "password": "SRM şifresi"
+        }
+      },
+      "reconfigure": {
+        "title": "Bağlantıyı aynı yönlendiriciye değiştirin",
+        "description": "IP veya oturum açma ayrıntılarını değiştirirken kullanın. Yapılandırmanın kimliği aynı kalacaktır.",
+        "data": {
+          "host": "IP adresi veya ana bilgisayar adı",
+          "port": "SRM bağlantı noktası",
+          "https": "HTTPS'yi kullan",
+          "verify_ssl": "TLS sertifikasını doğrulayın",
+          "username": "Kullanıcı adı SRM",
+          "password": "SRM şifresi"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "SRM'ye bağlanılamıyor. Yönlendiricinin adresini, bağlantı noktasını ve kullanılabilirliğini kontrol edin.",
+      "invalid_host": "Protokol, bağlantı noktası ve yol olmadan yalnızca IP adresini veya ana bilgisayar adını girin.",
+      "invalid_auth": "SRM'de oturum açma başarısız oldu. Hesap ayrıntılarını ve izinlerini doğrulayın.",
+      "permission_denied": "Hesabın yönlendirici istemcilerini okuma izni yok.",
+      "invalid_certificate": "Sertifika doğrulanamıyor. Ana makine adını ve sertifikayı doğrulayın; kimlik doğrulamayı yalnızca bilinçli olarak kapatın.",
+      "two_factor_required": "SRM ek bir oturum açma faktörü gerektirir. Bu akış henüz entegrasyon tarafından desteklenmiyor. 2FA'yı otomatik olarak kapatmayın.",
+      "unsupported_api": "Yönlendirici gerekli istemci API v5'i desteklemiyor.",
+      "unsupported_response": "İstemci API'si farklı bir yapı döndürür. Tools/probe.py yerel teşhisini talimatlara göre çalıştırın. DevTools'a gerek yoktur."
+    },
+    "abort": {
+      "single_instance_allowed": "Bu sürüm bir yönlendiriciyi destekler. Adresi değiştirmek için Mevcut entegrasyonla Yeniden Yapılandır'ı kullanın.",
+      "already_configured": "Yönlendirici zaten yapılandırılmıştır.",
+      "reauth_successful": "Giriş geri yüklendi.",
+      "reconfigure_successful": "Bağlantı ayarları değiştirildi."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Yönlendiricinin altındaki istemciler",
+        "description": "İstemci aralığı 5 saniyeden (varsayılan 30 saniye) ayarlanabilir. Tüm istemcilerin tablosu yönlendiricide kalır. Seçilen istemci varlıkları ve izleyiciler, bu entegrasyon kapsamındaki Entegre İstemciler cihazındadır.",
+        "data": {
+          "poll_interval": "İstemcinin saniye cinsinden okuma aralığı",
+          "create_clients": "Seçilen varlıkların bağlanmasına izin ver",
+          "create_trackers": "Katılım izleyicileri oluşturun",
+          "tracker_clients": "Takip cihazı olan müşteriler",
+          "client_entities": "Ayrı bir bağlantı varlığına sahip istemciler",
+          "remove_unselected": "Bu entegrasyonun seçilmemiş istemci varlıklarını kaldırın",
+          "traffic_source_unit": "Yönlendirici hızında doğrulanmış giriş ünitesi",
+          "traffic_rx_direction": "RX alımının doğrulanmış önemi"
+        },
+        "data_description": {
+          "tracker_clients": "Seçim, Entegre İstemciler cihazındaki izleyiciyi açar. Boş bir seçim izleyici olmadığı anlamına gelir.",
+          "poll_interval": "5 ila 3600 saniye. Varsayılan değer 30'dur. Beş saniye, dakikada 12 sorgu anlamına gelir; bunlar anlık olaylar değil.",
+          "client_entities": "Boş bir seçim herhangi bir istemci varlığı oluşturmaz. Tüm istemcilerin listesi yönlendiricide kalacaktır.",
+          "remove_unselected": "Ayrıca 0.1.0 sürümü tarafından oluşturulan varlıkları da otomatik olarak temizleyecektir. Seçilmeyen varlıkları ve bunların ayarlarını HA kayıt defterinden kaldırır; otomasyonlarının değiştirilmesi gerekebilir. Yönlendiriciyi veya diğer entegrasyonları kaldırmaz.",
+          "traffic_source_unit": "Yalnızca SRM'ye göre doğrulama yaptıktan sonra ayarlayın. Tablo çıkışı her zaman KB/s (1000 B/s) olacaktır. Doğrulanmamış hızlar boş kalacaktır.",
+          "traffic_rx_direction": "İndirme ve yükleme istemciye bakın. Yön doğrulanana kadar orijinal RX/TX yalnızca ayrıntılardadır."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - bağlantı"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – varlık"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "SRM'deki tanınmış müşteriler"
+      },
+      "clients_online": {
+        "name": "Çevrimiçi müşteriler"
+      },
+      "clients_offline": {
+        "name": "Çevrimdışı istemciler"
+      },
+      "clients_wifi": {
+        "name": "Çevrimiçi Wi-Fi istemcileri"
+      },
+      "clients_lan": {
+        "name": "Çevrimiçi LAN istemcileri"
+      },
+      "clients_guest": {
+        "name": "Çevrimiçi konuklar"
+      },
+      "wan_ipv4": {
+        "name": "SRM'ye göre IPv4 WAN durumu"
+      },
+      "wan_ipv6": {
+        "name": "SRM'ye göre IPv6 WAN durumu"
+      },
+      "cpu_total": {
+        "name": "CPU - toplam kullanım"
+      },
+      "cpu_user": {
+        "name": "CPU - kullanıcı yükü"
+      },
+      "cpu_system": {
+        "name": "CPU - sistem yükü"
+      },
+      "cpu_other": {
+        "name": "CPU - diğer yükler"
+      },
+      "ram_calculated": {
+        "name": "RAM - önbellek ve arabellek olmadan kullanın"
+      },
+      "ram_usage": {
+        "name": "SRM tarafından RAM kullanımı"
+      },
+      "swap_usage": {
+        "name": "SRM'ye göre swap kullanımı"
+      },
+      "mesh_nodes": {
+        "name": "Örgü düğümlerinin sayısı"
+      },
+      "network_interfaces": {
+        "name": "Ağ arayüzü sayısı"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Henüz doğrulanmadı",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Henüz doğrulanmadı",
+        "download": "RX = istemci indirme, TX = yükleme",
+        "upload": "RX = istemci yükleme, TX = indirme"
+      }
+    }
+  }
+}

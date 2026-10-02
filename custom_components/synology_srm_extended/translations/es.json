@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conexión a Synology RT6600ax",
+        "description": "Crea un dispositivo enrutador con resúmenes y una lista de clientes. Las entidades de cliente son opcionales. WOL sólo se envía manualmente. Recomendamos HTTPS y verificación de certificados.",
+        "data": {
+          "host": "Dirección IP o nombre de host",
+          "port": "Puerto SRM",
+          "https": "Usar HTTPS",
+          "verify_ssl": "Verificar el certificado TLS",
+          "username": "Nombre de usuario SRM",
+          "password": "contraseña SRM"
+        },
+        "data_description": {
+          "host": "Sin https://, puerto o ruta.",
+          "port": "Generalmente 8001 para HTTPS u 8000 para HTTP.",
+          "verify_ssl": "Deshabilitar es una opción explícita para un certificado local que no es de confianza."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Restaurar el inicio de sesión en SRM",
+        "description": "Ingrese los datos actuales del mismo enrutador. Se preservarán las identidades de los clientes.",
+        "data": {
+          "host": "Dirección IP o nombre de host",
+          "port": "Puerto SRM",
+          "https": "Usar HTTPS",
+          "verify_ssl": "Verificar el certificado TLS",
+          "username": "Nombre de usuario SRM",
+          "password": "contraseña SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "Cambiar la conexión al mismo enrutador",
+        "description": "Utilícelo al cambiar la IP o los datos de inicio de sesión. La identidad de la configuración seguirá siendo la misma.",
+        "data": {
+          "host": "Dirección IP o nombre de host",
+          "port": "Puerto SRM",
+          "https": "Usar HTTPS",
+          "verify_ssl": "Verificar el certificado TLS",
+          "username": "Nombre de usuario SRM",
+          "password": "contraseña SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se puede conectar a SRM. Verifique la dirección, puerto y disponibilidad del enrutador.",
+      "invalid_host": "Ingrese solo la dirección IP o el nombre de host, sin protocolo, puerto ni ruta.",
+      "invalid_auth": "Error al iniciar sesión en SRM. Verifique los detalles y permisos de la cuenta.",
+      "permission_denied": "La cuenta no tiene permiso para leer clientes de enrutador.",
+      "invalid_certificate": "El certificado no se puede verificar. Verifique el nombre de host y el certificado; sólo desactive conscientemente la autenticación.",
+      "two_factor_required": "SRM requiere un factor de inicio de sesión adicional. Este flujo aún no está respaldado por la integración. No desactives 2FA automáticamente.",
+      "unsupported_api": "El enrutador no admite la API de cliente v5 requerida.",
+      "unsupported_response": "La API del cliente devuelve una estructura diferente. Ejecute el diagnóstico local tools/probe.py según las instrucciones. No se necesitan DevTools."
+    },
+    "abort": {
+      "single_instance_allowed": "Esta versión admite un enrutador. Para cambiar la dirección, use Reconfigurar con una integración existente.",
+      "already_configured": "El enrutador ya está configurado.",
+      "reauth_successful": "El inicio de sesión ha sido restaurado.",
+      "reconfigure_successful": "Se han cambiado los ajustes de conexión."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Clientes debajo del enrutador",
+        "description": "El intervalo del cliente se puede configurar en 5 segundos (30 s predeterminado). La tabla de todos los clientes permanece en el enrutador. Las entidades de cliente y los rastreadores seleccionados se encuentran en el dispositivo de Clientes integrados en esta integración.",
+        "data": {
+          "poll_interval": "Intervalo de lectura del cliente en segundos",
+          "create_clients": "Permitir que las entidades seleccionadas se conecten",
+          "create_trackers": "Crear rastreadores de asistencia",
+          "tracker_clients": "Clientes con rastreador",
+          "client_entities": "Clientes con una entidad de conexión separada",
+          "remove_unselected": "Eliminar entidades cliente no seleccionadas de esta integración",
+          "traffic_source_unit": "Unidad de entrada verificada a la velocidad del enrutador",
+          "traffic_rx_direction": "Importancia verificada de la recepción RX"
+        },
+        "data_description": {
+          "tracker_clients": "La selección enciende el rastreador en el dispositivo de Clientes Integrados. Una selección vacía significa que no hay rastreadores.",
+          "poll_interval": "5 a 3600 segundos. El valor predeterminado es 30. Cinco segundos significan 12 consultas por minuto; Estos no son eventos inmediatos.",
+          "client_entities": "Una selección vacía no creará ninguna entidad de cliente. La lista de todos los clientes permanecerá con el enrutador.",
+          "remove_unselected": "También limpiará las entidades creadas automáticamente por la versión 0.1.0. Elimina entidades no seleccionadas y sus configuraciones del registro HA; Es posible que sea necesario modificar su automatización. No eliminará el enrutador ni otras integraciones.",
+          "traffic_source_unit": "Se establece solo después de validar con SRM. La salida de la tabla siempre será KB/s (1000 B/s). Las velocidades no verificadas permanecerán en blanco.",
+          "traffic_rx_direction": "Descargar y cargar se refieren al cliente. Hasta que se verifique la dirección, los RX/TX originales son solo detalles."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - conexión"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – presencia"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Clientes conocidos en SRM"
+      },
+      "clients_online": {
+        "name": "Clientes en línea"
+      },
+      "clients_offline": {
+        "name": "Clientes sin conexión"
+      },
+      "clients_wifi": {
+        "name": "Clientes Wi-Fi en línea"
+      },
+      "clients_lan": {
+        "name": "Clientes LAN en línea"
+      },
+      "clients_guest": {
+        "name": "Invitados en línea"
+      },
+      "wan_ipv4": {
+        "name": "Estado de WAN IPv4 por SRM"
+      },
+      "wan_ipv6": {
+        "name": "Estado de WAN IPv6 por SRM"
+      },
+      "cpu_total": {
+        "name": "CPU: uso total"
+      },
+      "cpu_user": {
+        "name": "CPU - carga de usuario"
+      },
+      "cpu_system": {
+        "name": "CPU - carga del sistema"
+      },
+      "cpu_other": {
+        "name": "CPU - otras cargas"
+      },
+      "ram_calculated": {
+        "name": "RAM: uso sin caché ni buffers"
+      },
+      "ram_usage": {
+        "name": "Uso de RAM por SRM"
+      },
+      "swap_usage": {
+        "name": "Uso de swap según SRM"
+      },
+      "mesh_nodes": {
+        "name": "El número de nodos de malla."
+      },
+      "network_interfaces": {
+        "name": "Número de interfaces de red"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Aún no verificado",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Aún no verificado",
+        "download": "RX = descarga del cliente, TX = carga",
+        "upload": "RX = carga del cliente, TX = descarga"
+      }
+    }
+  }
+}

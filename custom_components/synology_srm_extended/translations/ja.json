@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Synology RT6600ax への接続",
+        "description": "サマリーとクライアントのリストを含むルーターデバイスを作成します。クライアント エンティティはオプションです。 WOL は手動でのみ送信されます。 HTTPS と証明書の検証をお勧めします。",
+        "data": {
+          "host": "IPアドレスまたはホスト名",
+          "port": "SRMポート",
+          "https": "HTTPSを使用する",
+          "verify_ssl": "TLS証明書を検証する",
+          "username": "ユーザー名 SRM",
+          "password": "SRMパスワード"
+        },
+        "data_description": {
+          "host": "https://、ポート、パスはありません。",
+          "port": "通常、HTTPS の場合は 8001、HTTP の場合は 8000 です。",
+          "verify_ssl": "無効は、信頼できないローカル証明書の明示的なオプションです。"
+        }
+      },
+      "reauth_confirm": {
+        "title": "SRM へのログインを復元する",
+        "description": "同じルーターの現在のデータを入力します。クライアントの ID は保持されます。",
+        "data": {
+          "host": "IPアドレスまたはホスト名",
+          "port": "SRMポート",
+          "https": "HTTPSを使用する",
+          "verify_ssl": "TLS証明書を検証する",
+          "username": "ユーザー名 SRM",
+          "password": "SRMパスワード"
+        }
+      },
+      "reconfigure": {
+        "title": "同じルーターへの接続を変更する",
+        "description": "IPやログイン情報を変更する場合に使用します。構成のアイデンティティは変わりません。",
+        "data": {
+          "host": "IPアドレスまたはホスト名",
+          "port": "SRMポート",
+          "https": "HTTPSを使用する",
+          "verify_ssl": "TLS証明書を検証する",
+          "username": "ユーザー名 SRM",
+          "password": "SRMパスワード"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "SRM に接続できません。ルーターのアドレス、ポート、可用性を確認します。",
+      "invalid_host": "IP アドレスまたはホスト名のみを入力し、プロトコル、ポート、パスは入力しません。",
+      "invalid_auth": "SRM へのログインに失敗しました。アカウントの詳細と権限を確認します。",
+      "permission_denied": "このアカウントには、ルーター クライアントを読み取る権限がありません。",
+      "invalid_certificate": "証明書を検証できません。ホスト名と証明書を確認します。意識的に認証をオフにするだけです。",
+      "two_factor_required": "SRM には追加のログイン要素が必要です。このフローは統合ではまだサポートされていません。 2FA を自動的にオフにしないでください。",
+      "unsupported_api": "ルーターは必要なクライアント API v5 をサポートしていません。",
+      "unsupported_response": "クライアント API は別の構造を返します。指示に従って tools/probe.py ローカル診断を実行します。 DevTools は必要ありません。"
+    },
+    "abort": {
+      "single_instance_allowed": "このバージョンは 1 台のルーターをサポートします。アドレスを変更するには、既存の統合で再構成を使用します。",
+      "already_configured": "ルーターはすでに設定されています。",
+      "reauth_successful": "ログインが復旧しました。",
+      "reconfigure_successful": "接続設定が変更されました。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "ルーター配下のクライアント",
+        "description": "クライアント間隔は 5 秒から設定できます (デフォルトは 30 秒)。すべてのクライアントのテーブルはルーターに残ります。選択されたクライアント エンティティとトラッカーは、この統合の下で統合クライアント デバイス内にあります。",
+        "data": {
+          "poll_interval": "クライアントの読み取り間隔 (秒)",
+          "create_clients": "選択したエンティティの接続を許可します",
+          "create_trackers": "出席トラッカーを作成する",
+          "tracker_clients": "トラッカーをお持ちのクライアント",
+          "client_entities": "別の接続エンティティを持つクライアント",
+          "remove_unselected": "この統合の選択されていないクライアント エンティティを削除します",
+          "traffic_source_unit": "ルーター速度での入力ユニットを検証済み",
+          "traffic_rx_direction": "RX受信の重要性を検証"
+        },
+        "data_description": {
+          "tracker_clients": "選択すると、統合クライアント デバイスのトラッカーがオンになります。空の選択はトラッカーがないことを意味します。",
+          "poll_interval": "5 ～ 3600 秒。デフォルト値は 30 です。5 秒は 1 分あたり 12 クエリを意味します。これらは即時の出来事ではありません。",
+          "client_entities": "空の選択ではクライアント エンティティは作成されません。すべてのクライアントのリストはルーターに残ります。",
+          "remove_unselected": "また、バージョン 0.1.0 によって自動的に作成されたエンティティもクリーンアップされます。選択されていないエンティティとその設定を HA レジストリから削除します。自動化を変更する必要がある場合があります。ルーターやその他の統合は削除されません。",
+          "traffic_source_unit": "SRM に対して検証した後にのみ設定します。テーブルの出力は常に KB/s (1000 B/s) になります。未検証の速度は空白のままになります。",
+          "traffic_rx_direction": "ダウンロードとアップロードはクライアントを指します。方向が確認されるまでは、オリジナルの RX/TX は詳細のみです。"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} - 接続"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – 存在感"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "SRM の有名なクライアント"
+      },
+      "clients_online": {
+        "name": "オンラインクライアント"
+      },
+      "clients_offline": {
+        "name": "オフラインクライアント"
+      },
+      "clients_wifi": {
+        "name": "オンライン Wi-Fi クライアント"
+      },
+      "clients_lan": {
+        "name": "オンラインLANクライアント"
+      },
+      "clients_guest": {
+        "name": "オンラインゲスト"
+      },
+      "wan_ipv4": {
+        "name": "SRM による IPv4 WAN ステータス"
+      },
+      "wan_ipv6": {
+        "name": "SRM による IPv6 WAN ステータス"
+      },
+      "cpu_total": {
+        "name": "CPU - 合計使用量"
+      },
+      "cpu_user": {
+        "name": "CPU - ユーザー負荷"
+      },
+      "cpu_system": {
+        "name": "CPU - システム負荷"
+      },
+      "cpu_other": {
+        "name": "CPU - その他の負荷"
+      },
+      "ram_calculated": {
+        "name": "RAM - キャッシュやバッファなしで使用します"
+      },
+      "ram_usage": {
+        "name": "SRM による RAM 使用量"
+      },
+      "swap_usage": {
+        "name": "SRMに従ったスワップの使用"
+      },
+      "mesh_nodes": {
+        "name": "メッシュノードの数"
+      },
+      "network_interfaces": {
+        "name": "ネットワークインターフェースの数"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "まだ検証されていません",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "まだ検証されていません",
+        "download": "RX = クライアントのダウンロード、TX = アップロード",
+        "upload": "RX = クライアントのアップロード、TX = ダウンロード"
+      }
+    }
+  }
+}

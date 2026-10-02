@@ -1,0 +1,173 @@
+{
+  "title": "Synology SRM Extended",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Připojení k Synology RT6600ax",
+        "description": "Vytvoří zařízení routeru se souhrny a seznamem klientů. Klientské entity jsou volitelné. WOL se odesílá pouze ručně. Doporučujeme HTTPS a ověření certifikátu.",
+        "data": {
+          "host": "IP adresa nebo hostname",
+          "port": "Port SRM",
+          "https": "Používat HTTPS",
+          "verify_ssl": "Ověřovat TLS certifikát",
+          "username": "Uživatelské jméno SRM",
+          "password": "Heslo SRM"
+        },
+        "data_description": {
+          "host": "Bez https://, portu nebo cesty.",
+          "port": "Obvykle 8001 pro HTTPS nebo 8000 pro HTTP.",
+          "verify_ssl": "Vypnutí je výslovná volba pro nedůvěryhodný lokální certifikát."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Obnovit přihlášení do SRM",
+        "description": "Zadejte aktuální údaje stejného routeru. Identity klientů se zachovají.",
+        "data": {
+          "host": "IP adresa nebo hostname",
+          "port": "Port SRM",
+          "https": "Používat HTTPS",
+          "verify_ssl": "Ověřovat TLS certifikát",
+          "username": "Uživatelské jméno SRM",
+          "password": "Heslo SRM"
+        }
+      },
+      "reconfigure": {
+        "title": "Změnit připojení ke stejnému routeru",
+        "description": "Použijte při změně IP nebo přihlašovacích údajů. Identita konfigurace zůstane stejná.",
+        "data": {
+          "host": "IP adresa nebo hostname",
+          "port": "Port SRM",
+          "https": "Používat HTTPS",
+          "verify_ssl": "Ověřovat TLS certifikát",
+          "username": "Uživatelské jméno SRM",
+          "password": "Heslo SRM"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nelze se připojit k SRM. Zkontrolujte adresu, port a dostupnost routeru.",
+      "invalid_host": "Zadejte pouze IP adresu nebo hostname, bez protokolu, portu a cesty.",
+      "invalid_auth": "Přihlášení do SRM selhalo. Ověřte údaje a oprávnění účtu.",
+      "permission_denied": "Účet nemá oprávnění číst klienty routeru.",
+      "invalid_certificate": "Certifikát nelze ověřit. Ověřte hostname a certifikát; ověřování vypínejte pouze vědomě.",
+      "two_factor_required": "SRM vyžaduje další faktor přihlášení. Tento tok zatím integrace nepodporuje. Nevypínejte 2FA automaticky.",
+      "unsupported_api": "Router nepodporuje požadované klientské API v5.",
+      "unsupported_response": "Klientské API vrací jinou strukturu. Spusťte lokální diagnostiku tools/probe.py podle návodu. DevTools nejsou potřeba."
+    },
+    "abort": {
+      "single_instance_allowed": "Tato verze podporuje jeden router. Pro změnu adresy použijte Překonfigurovat u existující integrace.",
+      "already_configured": "Router je již nakonfigurován.",
+      "reauth_successful": "Přihlášení bylo obnoveno.",
+      "reconfigure_successful": "Nastavení připojení bylo změněno."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Klienti pod routerem",
+        "description": "Interval klientů lze nastavit od 5 sekund (výchozí 30 s). Tabulka všech klientů zůstává u routeru. Vybrané klientské entity a trackery jsou v zařízení Integrovaní klienti pod touto integrací.",
+        "data": {
+          "poll_interval": "Interval čtení klientů v sekundách",
+          "create_clients": "Povolit vybrané entity připojení",
+          "create_trackers": "Vytvářet trackery pro přítomnost",
+          "tracker_clients": "Klienti s trackerem",
+          "client_entities": "Klienti se samostatnou entitou připojení",
+          "remove_unselected": "Odstranit nevybrané klientské entity této integrace",
+          "traffic_source_unit": "Ověřená vstupní jednotka rychlostí routeru",
+          "traffic_rx_direction": "Ověřený význam příjmu RX"
+        },
+        "data_description": {
+          "tracker_clients": "Výběr zapne tracker v zařízení Integrovaní klienti. Prázdný výběr znamená žádné trackery.",
+          "poll_interval": "5 až 3600 sekund. Výchozí hodnota 30. Pět sekund znamená 12 dotazů za minutu; nejde o okamžité události.",
+          "client_entities": "Prázdný výběr nevytvoří žádné klientské entity. Seznam všech klientů zůstane u routeru.",
+          "remove_unselected": "Uklidí také entity automaticky vytvořené verzí 0.1.0. Odstraní nevybrané entity a jejich nastavení z registru HA; jejich automatizace bude případně nutné upravit. Router ani jiné integrace neodstraní.",
+          "traffic_source_unit": "Nastavte až po ověření proti SRM. Výstup tabulky bude vždy KB/s (1000 B/s). Neověřené rychlosti zůstanou prázdné.",
+          "traffic_rx_direction": "Download a upload se vztahují ke klientovi. Dokud není směr ověřený, původní RX/TX jsou pouze v podrobnostech."
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "client_connected": {
+        "name": "{client} – připojení"
+      }
+    },
+    "device_tracker": {
+      "presence": {
+        "name": "{client} – přítomnost"
+      }
+    },
+    "sensor": {
+      "clients_known": {
+        "name": "Známí klienti v SRM"
+      },
+      "clients_online": {
+        "name": "Online klienti"
+      },
+      "clients_offline": {
+        "name": "Offline klienti"
+      },
+      "clients_wifi": {
+        "name": "Online Wi-Fi klienti"
+      },
+      "clients_lan": {
+        "name": "Online LAN klienti"
+      },
+      "clients_guest": {
+        "name": "Online hosté"
+      },
+      "wan_ipv4": {
+        "name": "Stav WAN IPv4 podle SRM"
+      },
+      "wan_ipv6": {
+        "name": "Stav WAN IPv6 podle SRM"
+      },
+      "cpu_total": {
+        "name": "CPU – celkové využití"
+      },
+      "cpu_user": {
+        "name": "CPU – uživatelské zatížení"
+      },
+      "cpu_system": {
+        "name": "CPU – systémové zatížení"
+      },
+      "cpu_other": {
+        "name": "CPU – ostatní zatížení"
+      },
+      "ram_calculated": {
+        "name": "RAM – využití bez cache a bufferů"
+      },
+      "ram_usage": {
+        "name": "Využití RAM podle SRM"
+      },
+      "swap_usage": {
+        "name": "Využití swapu podle SRM"
+      },
+      "mesh_nodes": {
+        "name": "Počet uzlů mesh"
+      },
+      "network_interfaces": {
+        "name": "Počet síťových rozhraní"
+      }
+    }
+  },
+  "selector": {
+    "traffic_source_unit": {
+      "options": {
+        "unknown": "Zatím neověřeno",
+        "B/s": "B/s",
+        "KB/s": "KB/s (1000 B/s)",
+        "KiB/s": "KiB/s (1024 B/s)",
+        "bit/s": "bit/s"
+      }
+    },
+    "traffic_rx_direction": {
+      "options": {
+        "unknown": "Zatím neověřeno",
+        "download": "RX = download klienta, TX = upload",
+        "upload": "RX = upload klienta, TX = download"
+      }
+    }
+  }
+}
