@@ -303,3 +303,7 @@ When reporting an issue, include the integration version, HA version, router mod
 The project is provided free of charge for personal and non-commercial use only. Full terms are available in the [LICENSE](LICENSE) file.
 
 Synology and related logos are trademarks of their respective owners. Use of the name and logo indicates compatibility only and does not imply official support or affiliation with Synology.
+
+---
+
+![Visits](https://komarev.com/ghpvc/?username=Vachler-synology-srm-extended&color=green&style=square&label=VISITS)
