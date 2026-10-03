@@ -1,8 +1,8 @@
 <a href="README.md">
-  <img src="https://img.shields.io/badge/🇨🇿%20Čeština-a3e635?style=for-the-badge" height="34">
+  <img src="https://img.shields.io/badge/🇨🇿%20Čeština-2563eb?style=for-the-badge" height="34">
 </a>
 <a href="README_EN.md">
-  <img src="https://img.shields.io/badge/🇬🇧%20English-2563eb?style=for-the-badge" height="34">
+  <img src="https://img.shields.io/badge/🇬🇧%20English-a3e635?style=for-the-badge" height="34">
 </a>
 
 # Synology SRM Extended
@@ -16,19 +16,23 @@ Konfigurace probíhá přes uživatelské rozhraní. Pro běžné používání 
 ## Obsah
 
 - [Funkce](#funkce)
-- [Kompatibilita a požadavky](#kompatibilita-a-požadavky)
+- [Kompatibilita a požadavky](#kompatibilita-a-pozadavky)
 - [Instalace](#instalace)
-- [Nastavení](#nastavení)
-- [Používání](#používání)
+- [Nastavení](#nastaveni)
+- [Používání](#pouzivani)
 - [Rychlosti a grafy](#rychlosti-a-grafy)
 - [Aktualizace](#aktualizace)
 - [Jazyky](#jazyky)
-- [Diagnostika a řešení problémů](#diagnostika-a-řešení-problémů)
-- [Soukromí a zabezpečení](#soukromí-a-zabezpečení)
-- [Známá omezení](#známá-omezení)
-- [Licence a značky](#Licence-a-značky)
+- [Diagnostika a řešení problémů](#diagnostika-a-reseni-problemu)
+- [Soukromí a zabezpečení](#soukromi-a-zabezpeceni)
+- [Známá omezení](#znama-omezeni)
+- [Licence a značky](#licence-a-znacky)
 
-## Funkce
+---
+
+<a id="funkce"></a>
+
+## ⚙️ Funkce
 
 ### Přehled klientů
 
@@ -80,7 +84,11 @@ V detailu klienta je tlačítko **Probudit přes LAN (z HA)**. Home Assistant od
 
 Cílové zařízení musí WOL podporovat a mít jej povolený. Paket odchází z prostředí HA do místní sítě; průchod mezi oddělenými sítěmi či VLAN není zaručen. Potvrzení odeslání paketu není potvrzením probuzení zařízení.
 
-## Kompatibilita a požadavky
+---
+
+<a id="kompatibilita-a-pozadavky"></a>
+
+## 🧩 Kompatibilita a požadavky
 
 | Součást | Stav |
 | --- | --- |
@@ -96,7 +104,11 @@ Home Assistant musí mít síťový přístup k adrese a portu SRM. Přihlášen
 
 Vlastní tabulky, detaily a WOL jsou dostupné správci HA. Integrace využívá rozhraní SRM, jehož dostupnost se může lišit podle modelu, firmwaru a oprávnění účtu.
 
-## Instalace
+---
+
+<a id="instalace"></a>
+
+## 📦 Instalace
 
 Aktuálně je zdokumentovaná ruční instalace. Instalace přes HACS není v tomto projektu připravená.
 
@@ -109,7 +121,6 @@ Aktuálně je zdokumentovaná ruční instalace. Instalace přes HACS není v to
    `/config/custom_components/synology_srm_extended/`
 
 3. Ověřte výslednou strukturu:
-
 
    ```text
    /config/
@@ -139,7 +150,11 @@ Aktuálně je zdokumentovaná ruční instalace. Instalace přes HACS není v to
 
 Použijte skutečný port nastavený ve vašem routeru. Pro HTTPS se běžně používá port `8001`, pro HTTP port `8000`. Pokud používáte vlastní nedůvěryhodný certifikát, lze jeho ověřování výslovně vypnout; vhodnější je důvěryhodný certifikát. Integrace sama nepřepíná z HTTPS na HTTP.
 
-## Nastavení
+---
+
+<a id="nastaveni"></a>
+
+## 🔧 Nastavení
 
 Možnosti otevřete u integrace v **Nastavení → Zařízení a služby**.
 
@@ -159,7 +174,11 @@ Odstranění nevybraných entit je volitelné a standardně vypnuté. Před jeho
 
 Systémové údaje, WAN a mesh se načítají samostatně každých **5 minut**. Zkrácení intervalu klientů nezrychlí obnovu systémových údajů a zvyšuje počet požadavků na router.
 
-## Používání
+---
+
+<a id="pouzivani"></a>
+
+## 🖱️ Používání
 
 - **Seznam klientů:** otevřete zařízení routeru a klikněte například na **Známí klienti v SRM**. Dostupný je také přes odkaz **Navštívit**.
 - **Konkrétní skupina:** kliknutím na **Online klienti**, **Offline klienti**, **Online Wi-Fi klienti**, **Online LAN klienti** nebo **Online hosté** otevřete odpovídající výběr.
@@ -170,7 +189,11 @@ Systémové údaje, WAN a mesh se načítají samostatně každých **5 minut**.
 
 Tlačítko **Obnovit tabulku** načte poslední data integrace; nevyvolává dodatečný dotaz přímo na router.
 
-## Rychlosti a grafy
+---
+
+<a id="rychlosti-a-grafy"></a>
+
+## 📈 Rychlosti a grafy
 
 ### Provoz klientů
 
@@ -196,7 +219,11 @@ Tato paměťová historie je oddělená od standardní historie entit v HA. Sezn
 - **Název / typ zařízení nastaven ručně:** příznaky ručního nastavení v SRM.
 - **Stav WAN:** stav hlášený routerem, nikoli nezávislý test dostupnosti internetu.
 
-## Aktualizace
+---
+
+<a id="aktualizace"></a>
+
+## 🔄 Aktualizace
 
 1. Zálohujte konfiguraci HA.
 2. Přepište celou složku `custom_components/synology_srm_extended` novou verzí, včetně složek `frontend`, `translations` a `brand`.
@@ -216,7 +243,11 @@ Existující integraci není nutné odstraňovat a znovu přidávat. Změnu adre
 
 Verze 0.1.11 přidala 28 jazyků a odstranila velké seznamy klientů z atributů senzorů, které překračovaly limit Recorderu.
 
-## Jazyky
+---
+
+<a id="jazyky"></a>
+
+## 🌍 Jazyky
 
 Podporováno je 28 jazykových variant:
 
@@ -226,7 +257,11 @@ Vlastní rozhraní používá jazyk uživatele HA. Pro nepodporovaný jazyk se p
 
 Překlady jsou součástí integrace a za provozu nevyužívají online překladač. Cizojazyčné texty vznikly se strojovou podporou; jazykové opravy jsou vítané.
 
-## Diagnostika a řešení problémů
+---
+
+<a id="diagnostika-a-reseni-problemu"></a>
+
+## 🩺 Diagnostika a řešení problémů
 
 Diagnostiku stáhnete z nabídky integrace v **Nastavení → Zařízení a služby**. Není potřeba zapínat rozšířený sběr.
 
@@ -244,7 +279,11 @@ Diagnostiku stáhnete z nabídky integrace v **Nastavení → Zařízení a slu�
 
 Při hlášení chyby uveďte verzi integrace a HA, model routeru, verzi SRM, postup reprodukce a očekávaný výsledek. Přiložte relevantní log nebo diagnostiku. Před zveřejněním zkontrolujte také snímky obrazovky, které mohou obsahovat názvy zařízení, IP a MAC adresy.
 
-## Soukromí a zabezpečení
+---
+
+<a id="soukromi-a-zabezpeceni"></a>
+
+## 🔒 Soukromí a zabezpečení
 
 - Komunikace s routerem probíhá lokálně. Integrace nevyžaduje cloudový účet ani QuickConnect.
 - Přihlašovací údaje jsou uložené standardním mechanismem konfiguračních položek HA.
@@ -253,7 +292,11 @@ Při hlášení chyby uveďte verzi integrace a HA, model routeru, verzi SRM, po
 - Vlastní přehledy a ruční odeslání WOL kontrolují oprávnění správce HA.
 - Integrace nemění nastavení routeru. WOL je samostatná ručně vyvolaná akce z HA.
 
-## Známá omezení
+---
+
+<a id="znama-omezeni"></a>
+
+## ⚠️ Známá omezení
 
 - Jde o neoficiální integraci, která není produktem společnosti Synology.
 - Dostupnost údajů závisí na modelu, verzi SRM a oprávnění účtu.
@@ -263,7 +306,11 @@ Při hlášení chyby uveďte verzi integrace a HA, model routeru, verzi SRM, po
 - Při výpadku komunikace se používá stav nedostupnosti; výpadek se nepovažuje za odpojení všech klientů.
 - Vlastní detaily využívají frontend HA; kompatibilitu s jinými verzemi je nutné ověřit.
 
-## Licence a značky
+---
+
+<a id="licence-a-znacky"></a>
+
+## 📜 Licence a značky
 
 Projekt je poskytován zdarma pouze pro osobní a nekomerční použití. Podrobné podmínky jsou uvedeny v souboru [LICENSE](LICENSE).
 
