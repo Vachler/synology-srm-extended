@@ -28,7 +28,10 @@ Configuration is handled through the user interface. For normal use, YAML, SSH, 
 - [Known limitations](#known-limitations)
 - [License and trademarks](#license-and-trademarks)
 
-## Features
+---
+
+<a id="features"></a>
+## ⚙️ Features
 
 ### Client overview
 
@@ -80,7 +83,10 @@ The client detail view includes a **Wake via LAN (from HA)** button. Home Assist
 
 The target device must support WOL and have it enabled. The packet is sent from the HA environment to the local network; delivery across separated networks or VLANs is not guaranteed. Confirmation that the packet was sent does not confirm that the device actually woke up.
 
-## Compatibility and requirements
+---
+
+<a id="compatibility-and-requirements"></a>
+## 🧩 Compatibility and requirements
 
 | Component | Status |
 | --- | --- |
@@ -96,7 +102,10 @@ Home Assistant must have network access to the SRM address and port. Login and r
 
 Custom tables, details, and WOL are available to HA administrators. The integration uses SRM interfaces whose availability may vary depending on router model, firmware version, and account permissions.
 
-## Installation
+---
+
+<a id="installation"></a>
+## 📦 Installation
 
 Manual installation is currently documented. Installation through HACS is not yet prepared for this project.
 
@@ -138,7 +147,10 @@ Manual installation is currently documented. Installation through HACS is not ye
 
 Use the actual port configured on your router. Port `8001` is commonly used for HTTPS and port `8000` for HTTP. If you use an untrusted custom certificate, certificate verification can be explicitly disabled; using a trusted certificate is preferable. The integration does not automatically switch from HTTPS to HTTP.
 
-## Settings
+---
+
+<a id="settings"></a>
+## 🔧 Settings
 
 Open the integration options under **Settings → Devices & services**.
 
@@ -158,7 +170,10 @@ Removing unselected entities is optional and disabled by default. Before enablin
 
 System data, WAN information, and mesh data are loaded separately every **5 minutes**. Reducing the client refresh interval does not speed up system data updates and increases the number of requests sent to the router.
 
-## Usage
+---
+
+<a id="usage"></a>
+## 🖱️ Usage
 
 - **Client list:** open the router device and click, for example, **Known clients in SRM**. It is also available through the **Visit** link.
 - **Specific group:** click **Online clients**, **Offline clients**, **Online Wi-Fi clients**, **Online LAN clients**, or **Online guests** to open the corresponding selection.
@@ -169,7 +184,10 @@ System data, WAN information, and mesh data are loaded separately every **5 minu
 
 The **Refresh table** button loads the latest data already available to the integration; it does not trigger an additional direct request to the router.
 
-## Speeds and graphs
+---
+
+<a id="speeds-and-graphs"></a>
+## 📈 Speeds and graphs
 
 ### Client traffic
 
@@ -195,7 +213,10 @@ This in-memory history is separate from the standard HA entity history. Client l
 - **Name / device type set manually:** indicators that these values were manually configured in SRM.
 - **WAN status:** status reported by the router, not an independent Internet availability test.
 
-## Updates
+---
+
+<a id="updates"></a>
+## 🔄 Updates
 
 1. Back up your HA configuration.
 2. Replace the entire `custom_components/synology_srm_extended` folder with the new version, including the `frontend`, `translations`, and `brand` folders.
@@ -215,7 +236,10 @@ The existing integration does not need to be removed and added again. Address or
 
 Version 0.1.11 added 28 languages and removed large client lists from sensor attributes that exceeded the Recorder limit.
 
-## Languages
+---
+
+<a id="languages"></a>
+## 🌍 Languages
 
 28 language variants are supported:
 
@@ -225,7 +249,10 @@ The custom interface uses the language of the HA user. English is used as a fall
 
 Translations are included with the integration and do not use an online translation service during operation. Non-English texts were created with machine assistance; language corrections are welcome.
 
-## Diagnostics and troubleshooting
+---
+
+<a id="diagnostics-and-troubleshooting"></a>
+## 🩺 Diagnostics and troubleshooting
 
 Diagnostics can be downloaded from the integration menu under **Settings → Devices & services**. Extended diagnostic collection does not need to be enabled.
 
@@ -243,7 +270,10 @@ Diagnostics can be downloaded from the integration menu under **Settings → Dev
 
 When reporting an issue, include the integration version, HA version, router model, SRM version, reproduction steps, and the expected result. Attach a relevant log or diagnostic file. Before publishing screenshots, also check whether they contain device names, IP addresses, or MAC addresses.
 
-## Privacy and security
+---
+
+<a id="privacy-and-security"></a>
+## 🔒 Privacy and security
 
 - Communication with the router is local. The integration does not require a cloud account or QuickConnect.
 - Login credentials are stored using the standard HA configuration entry mechanism.
@@ -252,7 +282,10 @@ When reporting an issue, include the integration version, HA version, router mod
 - Custom views and manual WOL actions verify HA administrator permissions.
 - The integration does not change router settings. WOL is a separate action triggered manually from HA.
 
-## Known limitations
+---
+
+<a id="known-limitations"></a>
+## ⚠️ Known limitations
 
 - This is an unofficial integration and is not a Synology product.
 - Data availability depends on the router model, SRM version, and account permissions.
@@ -262,7 +295,10 @@ When reporting an issue, include the integration version, HA version, router mod
 - If communication fails, an unavailable state is used; the outage is not treated as all clients being disconnected.
 - Custom detail views use the HA frontend; compatibility with other versions must be verified.
 
-## License and trademarks
+---
+
+<a id="license-and-trademarks"></a>
+## 📜 License and trademarks
 
 The project is provided free of charge for personal and non-commercial use only. Full terms are available in the [LICENSE](LICENSE) file.
 
