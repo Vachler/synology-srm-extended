@@ -26,6 +26,7 @@ Konfigurace probíhá přes uživatelské rozhraní. Pro běžné používání 
 - [Diagnostika a řešení problémů](#diagnostika-a-reseni-problemu)
 - [Soukromí a zabezpečení](#soukromi-a-zabezpeceni)
 - [Známá omezení](#znama-omezeni)
+- [Obrázky](#obrazky)
 - [Licence a značky](#licence-a-znacky)
 
 ---
@@ -305,6 +306,33 @@ Při hlášení chyby uveďte verzi integrace a HA, model routeru, verzi SRM, po
 - Offline telefon nemusí znamenat nepřítomnost člověka. Soukromá/náhodná MAC může vytvořit novou identitu klienta.
 - Při výpadku komunikace se používá stav nedostupnosti; výpadek se nepovažuje za odpojení všech klientů.
 - Vlastní detaily využívají frontend HA; kompatibilitu s jinými verzemi je nutné ověřit.
+
+---
+
+<a id="obrazky"></a>
+## 🖼️ Obrázky
+
+| Přehled integrace | Klienti routeru |
+|---|---|
+| <a href="screenshots/integration-overview.png"><img src="screenshots/integration-overview.png" width="320"></a> | <a href="screenshots/clients-table.png"><img src="screenshots/clients-table.png" width="320"></a> |
+
+| Detail klienta | Přehled routeru |
+|---|---|
+| <a href="screenshots/client-detail-traffic.png"><img src="screenshots/client-detail-traffic.png" width="320"></a> | <a href="screenshots/router-device-overview.png"><img src="screenshots/router-device-overview.png" width="320"></a> |
+
+| CPU | RAM |
+|---|---|
+| <a href="screenshots/router-cpu-usage.png"><img src="screenshots/router-cpu-usage.png" width="320"></a> | <a href="screenshots/router-ram-usage.png"><img src="screenshots/router-ram-usage.png" width="320"></a> |
+
+| Mesh síť | Integrovaní klienti |
+|---|---|
+| <a href="screenshots/router-mesh-overview.png"><img src="screenshots/router-mesh-overview.png" width="320"></a> | <a href="screenshots/clients-device-overview.png"><img src="screenshots/clients-device-overview.png" width="320"></a> |
+
+### Detail připojení klienta
+
+<a href="screenshots/client-connection-detail.png">
+  <img src="screenshots/client-connection-detail.png" width="320">
+</a>
 
 ---
 
