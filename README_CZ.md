@@ -1,8 +1,8 @@
 <a href="README.md">
-  <img src="https://img.shields.io/badge/🇨🇿%20Čeština-2563eb?style=for-the-badge" height="34">
-</a>
-<a href="README_EN.md">
   <img src="https://img.shields.io/badge/🇬🇧%20English-a3e635?style=for-the-badge" height="34">
+</a>
+<a href="README_CZ.md">
+  <img src="https://img.shields.io/badge/🇨🇿%20Čeština-2563eb?style=for-the-badge" height="34">
 </a>
 
 # Synology SRM Extended
