@@ -315,3 +315,7 @@ Při hlášení chyby uveďte verzi integrace a HA, model routeru, verzi SRM, po
 Projekt je poskytován zdarma pouze pro osobní a nekomerční použití. Podrobné podmínky jsou uvedeny v souboru [LICENSE](LICENSE).
 
 Synology a související loga jsou značkami jejich vlastníka. Použití názvu a loga označuje kompatibilitu a neznamená oficiální podporu nebo spojení se společností Synology.
+
+---
+
+![Návštěvnost](https://komarev.com/ghpvc/?username=Vachler-synology-srm-extended&color=green&style=square&label=VISITS)
