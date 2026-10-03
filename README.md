@@ -7,7 +7,7 @@
 
 # Synology SRM Extended
 
-Unofficial integration of Synology routers running **SRM** with **Home Assistant**. It provides an overview of clients, optional device tracking, system information, mesh network details, and Wake-on-LAN directly within the integration interface.
+Synology SRM Extended is an unofficial Home Assistant integration for Synology SRM routers, including the RT6600ax. It provides client monitoring, device tracking, mesh information, CPU/RAM statistics, network status and Wake-on-LAN.
 
 Configuration is handled through the user interface. For normal use, YAML, SSH, browser developer tools, or a separate dashboard card are not required.
 
