@@ -26,6 +26,7 @@ Configuration is handled through the user interface. For normal use, YAML, SSH, 
 - [Diagnostics and troubleshooting](#diagnostics-and-troubleshooting)
 - [Privacy and security](#privacy-and-security)
 - [Known limitations](#known-limitations)
+- [Screenshots](#screenshots)
 - [License and trademarks](#license-and-trademarks)
 
 ---
@@ -296,6 +297,28 @@ When reporting an issue, include the integration version, HA version, router mod
 - Custom detail views use the HA frontend; compatibility with other versions must be verified.
 
 ---
+<a id="screenshots"></a>
+## 🖼️ Screenshots
+
+| Integration overview | Router clients |
+|---|---|
+| <a href="screenshots/integration-overview.png"><img src="screenshots/integration-overview.png" width="320"></a> | <a href="screenshots/clients-table.png"><img src="screenshots/clients-table.png" width="320"></a> |
+
+| Client detail | Router overview |
+|---|---|
+| <a href="screenshots/client-detail-traffic.png"><img src="screenshots/client-detail-traffic.png" width="320"></a> | <a href="screenshots/router-device-overview.png"><img src="screenshots/router-device-overview.png" width="320"></a> |
+
+| CPU | RAM |
+|---|---|
+| <a href="screenshots/router-cpu-usage.png"><img src="screenshots/router-cpu-usage.png" width="320"></a> | <a href="screenshots/router-ram-usage.png"><img src="screenshots/router-ram-usage.png" width="320"></a> |
+
+| Mesh network | Integrated clients |
+|---|---|
+| <a href="screenshots/router-mesh-overview.png"><img src="screenshots/router-mesh-overview.png" width="320"></a> | <a href="screenshots/clients-device-overview.png"><img src="screenshots/clients-device-overview.png" width="320"></a> |
+
+| Client connection detail | Integration settings |
+|---|---|
+| <a href="screenshots/client-connection-detail.png"><img src="screenshots/client-connection-detail.png" width="320"></a> | <a href="screenshots/integration-settings.png"><img src="screenshots/integration-settings.png" width="320"></a> |
 
 <a id="license-and-trademarks"></a>
 ## 📜 License and trademarks
