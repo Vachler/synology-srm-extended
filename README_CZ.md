@@ -11,7 +11,7 @@ Synology SRM Extended je neoficiální integrace Home Assistantu pro routery Syn
 
 Konfigurace probíhá přes uživatelské rozhraní. Pro běžné používání není potřeba YAML, SSH, vývojářské nástroje prohlížeče ani samostatná karta dashboardu.
 
-**Aktuální verze: 0.1.14** · **Komunikace: lokální dotazování (local polling)** · **28 jazyků**
+**Aktuální verze: 0.1.15** · **Komunikace: lokální dotazování (local polling)** · **28 jazyků**
 
 ## Obsah
 
@@ -233,7 +233,7 @@ Tato paměťová historie je oddělená od standardní historie entit v HA. Sezn
 
 Existující integraci není nutné odstraňovat a znovu přidávat. Změnu adresy nebo přihlašovacích údajů řešte přes **Překonfigurovat**; při vyžádaném obnovení přihlášení použijte nabídnutý formulář.
 
-### Změny ve verzi 0.1.14
+### Změny ve verzi 0.1.15
 
 - Podrobnější mesh s názvy z ethernetových údajů, klienty a porty.
 - Větší ukazatele CPU/RAM a vlastní grafy historie.
