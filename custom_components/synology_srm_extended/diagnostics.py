@@ -18,7 +18,7 @@ async def async_get_config_entry_diagnostics(hass, entry):
         if entity.platform == DOMAIN and entity.entity_id.startswith("device_tracker.")
     ]
     return {
-        "integration_version": "0.1.13",
+        "integration_version": "0.1.14",
         "target": "RT6600ax / SRM 1.3.2-9366 Update 2",
         "read_only": False,
         "manual_actions": ["wol_from_ha_local_broadcast"],

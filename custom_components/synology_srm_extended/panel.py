@@ -13,7 +13,7 @@ from .resources import mesh_nodes
 from .srm.models import CLIENT_FIELDS, RAW_METRIC_FIELDS, normalize_mac
 from .wol import send_wol
 
-URL = "/synology_srm_extended/clients-0.1.13.js"
+URL = "/synology_srm_extended/clients-0.1.14.js"
 
 
 def panel_path(entry_id):
@@ -59,7 +59,7 @@ async def async_register_panel(hass, entry):
     await panel_custom.async_register_panel(
         hass,
         frontend_url_path=panel_path(entry.entry_id),
-        webcomponent_name="synology-srm-clients-v0113",
+        webcomponent_name="synology-srm-clients-v0114",
         sidebar_title=None,
         sidebar_icon="mdi:router-network",
         module_url=URL,
@@ -115,7 +115,7 @@ def websocket_clients(hass, connection, msg):
         msg["id"],
         {
             "available": coordinator.last_update_success,
-            "integration_version": "0.1.13",
+            "integration_version": "0.1.14",
             "view": coordinator.inventory.views.get(connection.user.id),
             "poll_interval": coordinator.options.get("poll_interval", 30),
             "traffic_settings": {
