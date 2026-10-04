@@ -11,7 +11,7 @@ Synology SRM Extended is an unofficial Home Assistant integration for Synology S
 
 Configuration is handled through the user interface. For normal use, YAML, SSH, browser developer tools, or a separate dashboard card are not required.
 
-**Current version: 0.1.12** · **Communication: local polling** · **28 languages**
+**Current version: 0.1.13** · **Communication: local polling** · **28 languages**
 
 ## Contents
 
@@ -226,7 +226,7 @@ This in-memory history is separate from the standard HA entity history. Client l
 
 The existing integration does not need to be removed and added again. Address or credential changes should be handled through **Reconfigure**; if login renewal is requested, use the provided form.
 
-### Changes in version 0.1.12
+### Changes in version 0.1.13
 
 - More detailed mesh information with names from Ethernet data, clients, and ports.
 - Larger CPU/RAM gauges and custom history graphs.
