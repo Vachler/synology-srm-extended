@@ -1,7 +1,7 @@
-<a href="README.md">
+<a href="https://github.com/Vachler/synology-srm-extended/blob/main/README.md">
   <img src="https://img.shields.io/badge/🇬🇧%20English-a3e635?style=for-the-badge" height="34">
 </a>
-<a href="README_CZ.md">
+<a href="https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md">
   <img src="https://img.shields.io/badge/🇨🇿%20Čeština-2563eb?style=for-the-badge" height="34">
 </a>
 
@@ -15,19 +15,19 @@ Configuration is handled through the user interface. For normal use, YAML, SSH, 
 
 ## Contents
 
-- [Features](#features)
-- [Compatibility and requirements](#compatibility-and-requirements)
-- [Installation](#installation)
-- [Settings](#settings)
-- [Usage](#usage)
-- [Speeds and graphs](#speeds-and-graphs)
-- [Updates](#updates)
-- [Languages](#languages)
-- [Diagnostics and troubleshooting](#diagnostics-and-troubleshooting)
-- [Privacy and security](#privacy-and-security)
-- [Known limitations](#known-limitations)
-- [Screenshots](#screenshots)
-- [License and trademarks](#license-and-trademarks)
+- [Features](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#features)
+- [Compatibility and requirements](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#compatibility-and-requirements)
+- [Installation](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#installation)
+- [Settings](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#settings)
+- [Usage](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#usage)
+- [Speeds and graphs](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#speeds-and-graphs)
+- [Updates](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#updates)
+- [Languages](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#languages)
+- [Diagnostics and troubleshooting](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#diagnostics-and-troubleshooting)
+- [Privacy and security](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#privacy-and-security)
+- [Known limitations](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#known-limitations)
+- [Screenshots](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#screenshots)
+- [License and trademarks](https://github.com/Vachler/synology-srm-extended/blob/main/README.md#license-and-trademarks)
 
 ---
 
@@ -112,7 +112,7 @@ Custom tables, details, and WOL are available to HA administrators. The integrat
 ---
 Manual installation:
 
-1. Download the [installation ZIP for the latest release](https://github.com/Vachler/synology-srm-extended/releases/latest/download/synology_srm_extended.zip) and extract it.
+1. Download the [installation ZIP for the latest release](https://github.com/Vachler/synology-srm-extended/releases/latest) and extract it.
 
 2. Copy the `synology_srm_extended` folder from the extracted ZIP into `/config/custom_components/` in Home Assistant.
 
@@ -304,29 +304,29 @@ When reporting an issue, include the integration version, HA version, router mod
 
 | Integration overview | Router clients |
 |---|---|
-| <a href="screenshots/integration-overview.png"><img src="screenshots/integration-overview.png" width="320"></a> | <a href="screenshots/clients-table.png"><img src="screenshots/clients-table.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/integration-overview.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/integration-overview.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/clients-table.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/clients-table.png" width="320"></a> |
 
 | Client detail | Router overview |
 |---|---|
-| <a href="screenshots/client-detail-traffic.png"><img src="screenshots/client-detail-traffic.png" width="320"></a> | <a href="screenshots/router-device-overview.png"><img src="screenshots/router-device-overview.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/client-detail-traffic.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/client-detail-traffic.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-device-overview.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-device-overview.png" width="320"></a> |
 
 | CPU | RAM |
 |---|---|
-| <a href="screenshots/router-cpu-usage.png"><img src="screenshots/router-cpu-usage.png" width="320"></a> | <a href="screenshots/router-ram-usage.png"><img src="screenshots/router-ram-usage.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-cpu-usage.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-cpu-usage.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-ram-usage.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-ram-usage.png" width="320"></a> |
 
 | Mesh network | Integrated clients |
 |---|---|
-| <a href="screenshots/router-mesh-overview.png"><img src="screenshots/router-mesh-overview.png" width="320"></a> | <a href="screenshots/clients-device-overview.png"><img src="screenshots/clients-device-overview.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-mesh-overview.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-mesh-overview.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/clients-device-overview.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/clients-device-overview.png" width="320"></a> |
 
 | Client connection detail | Integration settings |
 |---|---|
-| <a href="screenshots/client-connection-detail.png"><img src="screenshots/client-connection-detail.png" width="320"></a> | <a href="screenshots/integration-settings.png"><img src="screenshots/integration-settings.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/client-connection-detail.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/client-connection-detail.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/integration-settings.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/integration-settings.png" width="320"></a> |
 
 ---
 <a id="license-and-trademarks"></a>
 ## 📜 License and trademarks
 
-The project is provided free of charge for personal and non-commercial use only. Full terms are available in the [LICENSE](LICENSE) file.
+The project is provided free of charge for personal and non-commercial use only. Full terms are available in the [LICENSE](https://github.com/Vachler/synology-srm-extended/blob/main/LICENSE) file.
 
 Synology and related logos are trademarks of their respective owners. Use of the name and logo indicates compatibility only and does not imply official support or affiliation with Synology.
 

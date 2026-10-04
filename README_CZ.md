@@ -1,7 +1,7 @@
-<a href="README.md">
+<a href="https://github.com/Vachler/synology-srm-extended/blob/main/README.md">
   <img src="https://img.shields.io/badge/🇬🇧%20English-a3e635?style=for-the-badge" height="34">
 </a>
-<a href="README_CZ.md">
+<a href="https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md">
   <img src="https://img.shields.io/badge/🇨🇿%20Čeština-2563eb?style=for-the-badge" height="34">
 </a>
 
@@ -15,19 +15,19 @@ Konfigurace probíhá přes uživatelské rozhraní. Pro běžné používání 
 
 ## Obsah
 
-- [Funkce](#funkce)
-- [Kompatibilita a požadavky](#kompatibilita-a-pozadavky)
-- [Instalace](#instalace)
-- [Nastavení](#nastaveni)
-- [Používání](#pouzivani)
-- [Rychlosti a grafy](#rychlosti-a-grafy)
-- [Aktualizace](#aktualizace)
-- [Jazyky](#jazyky)
-- [Diagnostika a řešení problémů](#diagnostika-a-reseni-problemu)
-- [Soukromí a zabezpečení](#soukromi-a-zabezpeceni)
-- [Známá omezení](#znama-omezeni)
-- [Obrázky](#obrazky)
-- [Licence a značky](#licence-a-znacky)
+- [Funkce](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#funkce)
+- [Kompatibilita a požadavky](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#kompatibilita-a-pozadavky)
+- [Instalace](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#instalace)
+- [Nastavení](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#nastaveni)
+- [Používání](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#pouzivani)
+- [Rychlosti a grafy](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#rychlosti-a-grafy)
+- [Aktualizace](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#aktualizace)
+- [Jazyky](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#jazyky)
+- [Diagnostika a řešení problémů](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#diagnostika-a-reseni-problemu)
+- [Soukromí a zabezpečení](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#soukromi-a-zabezpeceni)
+- [Známá omezení](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#znama-omezeni)
+- [Obrázky](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#obrazky)
+- [Licence a značky](https://github.com/Vachler/synology-srm-extended/blob/main/README_CZ.md#licence-a-znacky)
 
 ---
 
@@ -113,7 +113,7 @@ Vlastní tabulky, detaily a WOL jsou dostupné správci HA. Integrace využívá
 
 Aktuálně je zdokumentovaná ruční instalace. Instalace přes HACS není v tomto projektu připravená.
 
-1. Stáhněte [instalační ZIP nejnovější verze](https://github.com/Vachler/synology-srm-extended/releases/latest/download/synology_srm_extended.zip) a rozbalte jej.
+1. Stáhněte [instalační ZIP nejnovější verze](https://github.com/Vachler/synology-srm-extended/releases/latest) a rozbalte jej.
 
 2. Z rozbaleného ZIPu zkopírujte složku `synology_srm_extended` do složky `/config/custom_components/` v Home Assistantu.
 
@@ -314,30 +314,30 @@ Při hlášení chyby uveďte verzi integrace a HA, model routeru, verzi SRM, po
 
 | Přehled integrace | Klienti routeru |
 |---|---|
-| <a href="screenshots/integration-overview.png"><img src="screenshots/integration-overview.png" width="320"></a> | <a href="screenshots/clients-table.png"><img src="screenshots/clients-table.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/integration-overview.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/integration-overview.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/clients-table.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/clients-table.png" width="320"></a> |
 
 | Detail klienta | Přehled routeru |
 |---|---|
-| <a href="screenshots/client-detail-traffic.png"><img src="screenshots/client-detail-traffic.png" width="320"></a> | <a href="screenshots/router-device-overview.png"><img src="screenshots/router-device-overview.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/client-detail-traffic.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/client-detail-traffic.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-device-overview.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-device-overview.png" width="320"></a> |
 
 | CPU | RAM |
 |---|---|
-| <a href="screenshots/router-cpu-usage.png"><img src="screenshots/router-cpu-usage.png" width="320"></a> | <a href="screenshots/router-ram-usage.png"><img src="screenshots/router-ram-usage.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-cpu-usage.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-cpu-usage.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-ram-usage.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-ram-usage.png" width="320"></a> |
 
 | Mesh síť | Integrovaní klienti |
 |---|---|
-| <a href="screenshots/router-mesh-overview.png"><img src="screenshots/router-mesh-overview.png" width="320"></a> | <a href="screenshots/clients-device-overview.png"><img src="screenshots/clients-device-overview.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-mesh-overview.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/router-mesh-overview.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/clients-device-overview.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/clients-device-overview.png" width="320"></a> |
 
 | Detail připojení klienta | Nastavení integrace |
 |---|---|
-| <a href="screenshots/client-connection-detail.png"><img src="screenshots/client-connection-detail.png" width="320"></a> | <a href="screenshots/integration-settings.png"><img src="screenshots/integration-settings.png" width="320"></a> |
+| <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/client-connection-detail.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/client-connection-detail.png" width="320"></a> | <a href="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/integration-settings.png"><img src="https://raw.githubusercontent.com/Vachler/synology-srm-extended/main/screenshots/integration-settings.png" width="320"></a> |
 ---
 
 <a id="licence-a-znacky"></a>
 
 ## 📜 Licence a značky
 
-Projekt je poskytován zdarma pouze pro osobní a nekomerční použití. Podrobné podmínky jsou uvedeny v souboru [LICENSE](LICENSE).
+Projekt je poskytován zdarma pouze pro osobní a nekomerční použití. Podrobné podmínky jsou uvedeny v souboru [LICENSE](https://github.com/Vachler/synology-srm-extended/blob/main/LICENSE).
 
 Synology a související loga jsou značkami jejich vlastníka. Použití názvu a loga označuje kompatibilitu a neznamená oficiální podporu nebo spojení se společností Synology.
 
