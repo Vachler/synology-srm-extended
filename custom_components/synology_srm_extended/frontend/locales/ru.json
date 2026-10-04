@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Зарезервировано (МиБ)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "Маршрутизатор недоступен. Отображаемые данные могут быть устаревшими.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "Маршрутизатор не предоставляет измерения трафика для этого кабельного клиента в ответе клиента.",
-  "Rozhraní 0.1.12": "Интерфейс 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Интерфейс 0.1.12 · Интеграция {p0}",
+  "Rozhraní 0.1.13": "Интерфейс 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Интерфейс 0.1.13 · Интеграция {p0}",
   "Rozhraní routeru (technický název)": "Интерфейс маршрутизатора (техническое название)",
   "Rychlost spojení (původní hodnota)": "Скорость соединения (исходное значение)",
   "Sestupně ↓": "По убыванию ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Порты - скорость соединения по SRM (не передача данных)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "Связь между узлами SRM в этом ответе не различается.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Поток трафика при открытой детализации (КБ/с)",
-  "Historie není dostupná.": "История недоступна."
+  "Historie není dostupná.": "История недоступна.",
+  "Hlavní router": "Главный маршрутизатор"
 }

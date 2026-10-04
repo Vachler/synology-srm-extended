@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "保留 (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "路由器不可用。显示的数据可能已过时。",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "路由器不会在客户端响应中提供该电缆客户端的流量测量。",
-  "Rozhraní 0.1.12": "接口0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "接口0.1.12·{p0}集成",
+  "Rozhraní 0.1.13": "接口0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "接口0.1.13·{p0}集成",
   "Rozhraní routeru (technický název)": "路由器接口（技术名称）",
   "Rychlost spojení (původní hodnota)": "连接速度（原值）",
   "Sestupně ↓": "降序↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "端口 - 根据 SRM 的连接速度（不是数据传输）",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "SRM 节点之间的链路在此响应中不区分。",
   "Průběh provozu při otevřeném detailu (KB/s)": "详细信息打开的流量 (KB/s)",
-  "Historie není dostupná.": "历史记录不可用。"
+  "Historie není dostupná.": "历史记录不可用。",
+  "Hlavní router": "主路由器"
 }

@@ -44,7 +44,7 @@ class ClientEntity(CoordinatorEntity):
     @property
     def detail_attributes(self):
         return {
-            "custom_ui_state_card": "synology-srm-client-info-v0112",
+            "custom_ui_state_card": "synology-srm-client-info-v0113",
             "srm_entry_id": self.entry.entry_id,
             "srm_client_mac": self.mac,
         }

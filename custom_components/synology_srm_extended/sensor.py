@@ -61,7 +61,7 @@ class ClientCount(RouterEntity, SensorEntity):
     @property
     def extra_state_attributes(self):
         return {
-            "custom_ui_state_card": "synology-srm-clients-info-v0112",
+            "custom_ui_state_card": "synology-srm-clients-info-v0113",
             "srm_entry_id": self.entry_id,
             "srm_client_scope": self.key,
         }
@@ -180,7 +180,7 @@ class RouterMetric(RouterEntity, SensorEntity):
     def extra_state_attributes(self):
         if self.key == "mesh_nodes":
             return {
-                "custom_ui_state_card": "synology-srm-resource-info-v0112",
+                "custom_ui_state_card": "synology-srm-resource-info-v0113",
                 "srm_entry_id": self.entry_id,
                 "resource_kind": "mesh_nodes",
             }
@@ -202,7 +202,7 @@ class RouterMetric(RouterEntity, SensorEntity):
             ),
         }
         return {
-            "custom_ui_state_card": "synology-srm-resource-info-v0112",
+            "custom_ui_state_card": "synology-srm-resource-info-v0113",
             "srm_entry_id": self.entry_id,
             "resource_kind": self.key,
             "measurement_note": notes.get(self.key, ""),

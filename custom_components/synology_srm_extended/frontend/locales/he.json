@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "שמור (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "הנתב אינו זמין. ייתכן שהנתונים המוצגים אינם מעודכנים.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "הנתב אינו מספק מדידות תעבורה עבור לקוח כבלים זה בתגובת הלקוח.",
-  "Rozhraní 0.1.12": "ממשק 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "ממשק 0.1.12 · שילוב {p0}",
+  "Rozhraní 0.1.13": "ממשק 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "ממשק 0.1.13 · שילוב {p0}",
   "Rozhraní routeru (technický název)": "ממשק נתב (שם טכני)",
   "Rychlost spojení (původní hodnota)": "מהירות חיבור (ערך מקורי)",
   "Sestupně ↓": "יורד ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "יציאות - מהירות חיבור לפי SRM (לא העברת נתונים)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "הקישור בין צמתי SRM אינו מבדיל בתגובה זו.",
   "Průběh provozu při otevřeném detailu (KB/s)": "זרימת תנועה עם פרטים פתוחים (KB/s)",
-  "Historie není dostupná.": "ההיסטוריה אינה זמינה."
+  "Historie není dostupná.": "ההיסטוריה אינה זמינה.",
+  "Hlavní router": "הנתב הראשי"
 }

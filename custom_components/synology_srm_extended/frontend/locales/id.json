@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Dipesan (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "Routernya tidak tersedia. Data yang ditampilkan mungkin kedaluwarsa.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "Router tidak menyediakan pengukuran lalu lintas untuk klien kabel ini dalam respons klien.",
-  "Rozhraní 0.1.12": "Antarmuka 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Antarmuka 0.1.12 · Integrasi {p0}",
+  "Rozhraní 0.1.13": "Antarmuka 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Antarmuka 0.1.13 · Integrasi {p0}",
   "Rozhraní routeru (technický název)": "Antarmuka router (nama teknis)",
   "Rychlost spojení (původní hodnota)": "Kecepatan koneksi (nilai asli)",
   "Sestupně ↓": "Menurun ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Port - kecepatan koneksi menurut SRM (bukan transfer data)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "Tautan antara node SRM tidak membedakan respon ini.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Arus lalu lintas dengan detail terbuka (KB/s)",
-  "Historie není dostupná.": "Riwayat tidak tersedia."
+  "Historie není dostupná.": "Riwayat tidak tersedia.",
+  "Hlavní router": "Router utama"
 }

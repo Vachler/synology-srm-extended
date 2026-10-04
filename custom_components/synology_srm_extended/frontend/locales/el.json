@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Με κράτηση (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "Ο δρομολογητής δεν είναι διαθέσιμος. Τα εμφανιζόμενα δεδομένα ενδέχεται να μην είναι ενημερωμένα.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "Ο δρομολογητής δεν παρέχει μετρήσεις κυκλοφορίας για αυτόν τον υπολογιστή-πελάτη καλωδίου στην απόκριση του πελάτη.",
-  "Rozhraní 0.1.12": "Διεπαφή 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Διεπαφή 0.1.12 · Ενσωμάτωση {p0}",
+  "Rozhraní 0.1.13": "Διεπαφή 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Διεπαφή 0.1.13 · Ενσωμάτωση {p0}",
   "Rozhraní routeru (technický název)": "Διασύνδεση δρομολογητή (τεχνική ονομασία)",
   "Rychlost spojení (původní hodnota)": "Ταχύτητα σύνδεσης (αρχική τιμή)",
   "Sestupně ↓": "Φθίνουσα ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Θύρες - ταχύτητα σύνδεσης σύμφωνα με SRM (όχι μεταφορά δεδομένων)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "Η σύνδεση μεταξύ των κόμβων SRM δεν διαφοροποιείται σε αυτήν την απόκριση.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Ροή κυκλοφορίας με ανοιχτή λεπτομέρεια (KB/s)",
-  "Historie není dostupná.": "Το ιστορικό δεν είναι διαθέσιμο."
+  "Historie není dostupná.": "Το ιστορικό δεν είναι διαθέσιμο.",
+  "Hlavní router": "Κύριος δρομολογητής"
 }

@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Dự trữ (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "Bộ định tuyến không có sẵn. Dữ liệu được hiển thị có thể đã lỗi thời.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "Bộ định tuyến không cung cấp phép đo lưu lượng cho máy khách cáp này trong phản hồi của máy khách.",
-  "Rozhraní 0.1.12": "Giao diện 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Giao diện 0.1.12 · Tích hợp {p0}",
+  "Rozhraní 0.1.13": "Giao diện 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Giao diện 0.1.13 · Tích hợp {p0}",
   "Rozhraní routeru (technický název)": "Giao diện bộ định tuyến (tên kỹ thuật)",
   "Rychlost spojení (původní hodnota)": "Tốc độ kết nối (giá trị gốc)",
   "Sestupně ↓": "Giảm dần ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Cổng - tốc độ kết nối theo SRM (không truyền dữ liệu)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "Liên kết giữa các nút SRM không có sự khác biệt trong phản hồi này.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Luồng lưu lượng với chi tiết mở (KB/s)",
-  "Historie není dostupná.": "Lịch sử không có sẵn."
+  "Historie není dostupná.": "Lịch sử không có sẵn.",
+  "Hlavní router": "Bộ định tuyến chính"
 }

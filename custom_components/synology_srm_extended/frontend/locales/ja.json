@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "予約済み (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "ルーターが使用できません。表示されているデータは古い可能性があります。",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "ルータは、クライアント応答でこのケーブル クライアントのトラフィック測定を提供しません。",
-  "Rozhraní 0.1.12": "インターフェース0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "インターフェイス 0.1.12 · {p0} 統合",
+  "Rozhraní 0.1.13": "インターフェース0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "インターフェイス 0.1.13 · {p0} 統合",
   "Rozhraní routeru (technický název)": "ルーターインターフェース（技術名）",
   "Rychlost spojení (původní hodnota)": "接続速度（元の値）",
   "Sestupně ↓": "降下中 ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "ポート - SRM に基づく接続速度 (データ転送ではありません)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "この応答では、SRM ノード間のリンクは区別されません。",
   "Průběh provozu při otevřeném detailu (KB/s)": "詳細を開いた状態のトラフィック フロー (KB/秒)",
-  "Historie není dostupná.": "履歴は利用できません。"
+  "Historie není dostupná.": "履歴は利用できません。",
+  "Hlavní router": "メインルーター"
 }

@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "예약됨(MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "라우터를 사용할 수 없습니다. 표시된 데이터는 최신 정보가 아닐 수 있습니다.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "라우터는 클라이언트 응답에서 이 케이블 클라이언트에 대한 트래픽 측정을 제공하지 않습니다.",
-  "Rozhraní 0.1.12": "인터페이스 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "인터페이스 0.1.12 · {p0} 통합",
+  "Rozhraní 0.1.13": "인터페이스 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "인터페이스 0.1.13 · {p0} 통합",
   "Rozhraní routeru (technický název)": "라우터 인터페이스(기술적 이름)",
   "Rychlost spojení (původní hodnota)": "연결 속도(원래 값)",
   "Sestupně ↓": "내림차순 ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "포트 - SRM에 따른 연결 속도(데이터 전송 아님)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "이 응답에서는 SRM 노드 간의 링크가 구별되지 않습니다.",
   "Průběh provozu při otevřeném detailu (KB/s)": "세부 정보가 열려 있는 트래픽 흐름(KB/s)",
-  "Historie není dostupná.": "기록을 사용할 수 없습니다."
+  "Historie není dostupná.": "기록을 사용할 수 없습니다.",
+  "Hlavní router": "기본 라우터"
 }

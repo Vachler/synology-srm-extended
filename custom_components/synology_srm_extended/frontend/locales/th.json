@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "สงวนไว้ (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "เราเตอร์ไม่พร้อมใช้งาน ข้อมูลที่แสดงอาจล้าสมัย",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "เราเตอร์ไม่ได้จัดให้มีการวัดการรับส่งข้อมูลสำหรับไคลเอ็นต์เคเบิลนี้ในการตอบกลับของไคลเอ็นต์",
-  "Rozhraní 0.1.12": "อินเทอร์เฟซ 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "อินเทอร์เฟซ 0.1.12 · การรวม {p0}",
+  "Rozhraní 0.1.13": "อินเทอร์เฟซ 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "อินเทอร์เฟซ 0.1.13 · การรวม {p0}",
   "Rozhraní routeru (technický název)": "อินเทอร์เฟซเราเตอร์ (ชื่อทางเทคนิค)",
   "Rychlost spojení (původní hodnota)": "ความเร็วการเชื่อมต่อ (ค่าเดิม)",
   "Sestupně ↓": "จากมากไปน้อย ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "พอร์ต - ความเร็วการเชื่อมต่อตาม SRM (ไม่ใช่การถ่ายโอนข้อมูล)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "การเชื่อมโยงระหว่างโหนด SRM ไม่ได้สร้างความแตกต่างในการตอบกลับนี้",
   "Průběh provozu při otevřeném detailu (KB/s)": "กระแสการรับส่งข้อมูลที่เปิดรายละเอียด (KB/s)",
-  "Historie není dostupná.": "ไม่มีประวัติ"
+  "Historie není dostupná.": "ไม่มีประวัติ",
+  "Hlavní router": "เราเตอร์หลัก"
 }

@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Зарезервовано (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "Роутер недоступний. Відображені дані можуть бути застарілими.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "Маршрутизатор не надає вимірювання трафіку для цього кабельного клієнта у відповіді клієнта.",
-  "Rozhraní 0.1.12": "Інтерфейс 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Інтерфейс 0.1.12 · Інтеграція {p0}",
+  "Rozhraní 0.1.13": "Інтерфейс 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Інтерфейс 0.1.13 · Інтеграція {p0}",
   "Rozhraní routeru (technický název)": "Інтерфейс маршрутизатора (технічна назва)",
   "Rychlost spojení (původní hodnota)": "Швидкість з'єднання (початкове значення)",
   "Sestupně ↓": "Спадання ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Порти - швидкість з'єднання відповідно до SRM (не передача даних)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "У цій відповіді зв’язок між вузлами SRM не розрізняється.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Потік трафіку з відкритими деталями (КБ/с)",
-  "Historie není dostupná.": "Історія недоступна."
+  "Historie není dostupná.": "Історія недоступна.",
+  "Hlavní router": "Головний маршрутизатор"
 }

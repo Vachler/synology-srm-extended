@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Reserved (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "The router is not available. The displayed data may be out of date.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "The router does not provide traffic measurements for this cable client in the client response.",
-  "Rozhraní 0.1.12": "Interface 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Interface 0.1.12 · {p0} integration",
+  "Rozhraní 0.1.13": "Interface 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Interface 0.1.13 · {p0} integration",
   "Rozhraní routeru (technický název)": "Router interface (technical name)",
   "Rychlost spojení (původní hodnota)": "Link rate (raw value)",
   "Sestupně ↓": "Descending ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Ports – link speed reported by SRM (not throughput)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "SRM does not identify inter-node links in this response.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Traffic while this detail is open (KB/s)",
-  "Historie není dostupná.": "History is unavailable."
+  "Historie není dostupná.": "History is unavailable.",
+  "Hlavní router": "Main router"
 }

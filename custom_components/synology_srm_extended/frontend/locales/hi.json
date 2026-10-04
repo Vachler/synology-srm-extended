@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "आरक्षित (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "राउटर उपलब्ध नहीं है. प्रदर्शित डेटा पुराना हो सकता है.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "राउटर क्लाइंट प्रतिक्रिया में इस केबल क्लाइंट के लिए ट्रैफ़िक माप प्रदान नहीं करता है।",
-  "Rozhraní 0.1.12": "इंटरफ़ेस 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "इंटरफ़ेस 0.1.12 · {p0} एकीकरण",
+  "Rozhraní 0.1.13": "इंटरफ़ेस 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "इंटरफ़ेस 0.1.13 · {p0} एकीकरण",
   "Rozhraní routeru (technický název)": "राउटर इंटरफ़ेस (तकनीकी नाम)",
   "Rychlost spojení (původní hodnota)": "कनेक्शन की गति (मूल मान)",
   "Sestupně ↓": "अवरोही ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "पोर्ट - एसआरएम के अनुसार कनेक्शन की गति (डेटा ट्रांसफर नहीं)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "इस प्रतिक्रिया में एसआरएम नोड्स के बीच का लिंक अंतर नहीं करता है।",
   "Průběh provozu při otevřeném detailu (KB/s)": "खुले विवरण के साथ ट्रैफ़िक प्रवाह (KB/s)",
-  "Historie není dostupná.": "इतिहास उपलब्ध नहीं है."
+  "Historie není dostupná.": "इतिहास उपलब्ध नहीं है.",
+  "Hlavní router": "मुख्य राउटर"
 }

@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Reserviert (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "Der Router ist nicht verfügbar. Die angezeigten Daten sind möglicherweise veraltet.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "Der Router stellt in der Client-Antwort keine Verkehrsmessungen für diesen Kabel-Client bereit.",
-  "Rozhraní 0.1.12": "Schnittstelle 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Schnittstelle 0.1.12 · {p0}-Integration",
+  "Rozhraní 0.1.13": "Schnittstelle 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Schnittstelle 0.1.13 · {p0}-Integration",
   "Rozhraní routeru (technický název)": "Router-Schnittstelle (technischer Name)",
   "Rychlost spojení (původní hodnota)": "Verbindungsgeschwindigkeit (ursprünglicher Wert)",
   "Sestupně ↓": "Absteigend ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Ports – Verbindungsgeschwindigkeit laut SRM (keine Datenübertragung)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "Die Verbindung zwischen den SRM-Knoten unterscheidet sich in dieser Antwort nicht.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Verkehrsfluss mit geöffneten Details (KB/s)",
-  "Historie není dostupná.": "Der Verlauf ist nicht verfügbar."
+  "Historie není dostupná.": "Der Verlauf ist nicht verfügbar.",
+  "Hlavní router": "Hauptrouter"
 }

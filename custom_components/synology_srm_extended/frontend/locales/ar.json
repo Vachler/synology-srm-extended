@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "محجوز (ميجابايت)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "جهاز التوجيه غير متوفر. قد تكون البيانات المعروضة قديمة.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "لا يوفر جهاز التوجيه قياسات حركة المرور لعميل الكبل هذا في استجابة العميل.",
-  "Rozhraní 0.1.12": "الواجهة 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "الواجهة 0.1.12 · تكامل {p0}",
+  "Rozhraní 0.1.13": "الواجهة 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "الواجهة 0.1.13 · تكامل {p0}",
   "Rozhraní routeru (technický název)": "واجهة جهاز التوجيه (الاسم الفني)",
   "Rychlost spojení (původní hodnota)": "سرعة الاتصال (القيمة الأصلية)",
   "Sestupně ↓": "تنازلي ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "المنافذ - سرعة الاتصال وفقًا لـ SRM (وليس نقل البيانات)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "لا يفرق الارتباط بين عقد SRM في هذه الاستجابة.",
   "Průběh provozu při otevřeném detailu (KB/s)": "تدفق حركة المرور مع التفاصيل المفتوحة (كيلو بايت/ثانية)",
-  "Historie není dostupná.": "التاريخ غير متوفر."
+  "Historie není dostupná.": "التاريخ غير متوفر.",
+  "Hlavní router": "الموجّه الرئيسي"
 }

@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Rezervat (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "Routerul nu este disponibil. Datele afișate pot fi învechite.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "Routerul nu furnizează măsurători de trafic pentru acest client de cablu în răspunsul clientului.",
-  "Rozhraní 0.1.12": "Interfața 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Interfață 0.1.12 · Integrare {p0}",
+  "Rozhraní 0.1.13": "Interfața 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Interfață 0.1.13 · Integrare {p0}",
   "Rozhraní routeru (technický název)": "Interfață router (nume tehnic)",
   "Rychlost spojení (původní hodnota)": "Viteza de conectare (valoarea inițială)",
   "Sestupně ↓": "Descrescătoare ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Porturi - viteza de conectare conform SRM (nu transfer de date)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "Legătura dintre nodurile SRM nu se diferențiază în acest răspuns.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Fluxul de trafic cu detalii deschise (KB/s)",
-  "Historie není dostupná.": "Istoricul nu este disponibil."
+  "Historie není dostupná.": "Istoricul nu este disponibil.",
+  "Hlavní router": "Router principal"
 }

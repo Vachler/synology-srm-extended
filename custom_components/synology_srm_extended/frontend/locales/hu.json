@@ -65,8 +65,8 @@
   "Rezervováno (MiB)": "Fenntartva (MiB)",
   "Router není dostupný. Zobrazené údaje mohou být zastaralé.": "A router nem elérhető. Előfordulhat, hogy a megjelenített adatok elavultak.",
   "Router v klientské odpovědi neposkytuje měření přenosu tohoto kabelového klienta.": "Az útválasztó nem biztosít forgalommérést ehhez a kábeles klienshez az ügyfél válaszában.",
-  "Rozhraní 0.1.12": "Interfész 0.1.12",
-  "Rozhraní 0.1.12 · integrace {p0}": "Interfész 0.1.12 · {p0} integráció",
+  "Rozhraní 0.1.13": "Interfész 0.1.13",
+  "Rozhraní 0.1.13 · integrace {p0}": "Interfész 0.1.13 · {p0} integráció",
   "Rozhraní routeru (technický název)": "Router interfész (műszaki név)",
   "Rychlost spojení (původní hodnota)": "Csatlakozási sebesség (eredeti érték)",
   "Sestupně ↓": "Csökkenő ↓",
@@ -153,5 +153,6 @@
   "Porty – rychlost spojení dle SRM (nikoli přenos dat)": "Portok - kapcsolati sebesség az SRM szerint (nem adatátvitel)",
   "Propojení mezi uzly SRM v této odpovědi nerozlišuje.": "Az SRM csomópontok közötti kapcsolat ebben a válaszban nem tesz különbséget.",
   "Průběh provozu při otevřeném detailu (KB/s)": "Forgalom menete nyitott részletekkel (KB/s)",
-  "Historie není dostupná.": "Az előzmények nem érhetők el."
+  "Historie není dostupná.": "Az előzmények nem érhetők el.",
+  "Hlavní router": "Fő router"
 }
