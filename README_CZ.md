@@ -328,12 +328,9 @@ Při hlášení chyby uveďte verzi integrace a HA, model routeru, verzi SRM, po
 |---|---|
 | <a href="screenshots/router-mesh-overview.png"><img src="screenshots/router-mesh-overview.png" width="320"></a> | <a href="screenshots/clients-device-overview.png"><img src="screenshots/clients-device-overview.png" width="320"></a> |
 
-### Detail připojení klienta
-
-<a href="screenshots/client-connection-detail.png">
-  <img src="screenshots/client-connection-detail.png" width="320">
-</a>
-
+| Detail připojení klienta | Nastavení integrace |
+|---|---|
+| <a href="screenshots/client-connection-detail.png"><img src="screenshots/client-connection-detail.png" width="320"></a> | <a href="screenshots/integration-settings.png"><img src="screenshots/integration-settings.png" width="320"></a> |
 ---
 
 <a id="licence-a-znacky"></a>
