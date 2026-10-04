@@ -320,6 +320,7 @@ When reporting an issue, include the integration version, HA version, router mod
 |---|---|
 | <a href="screenshots/client-connection-detail.png"><img src="screenshots/client-connection-detail.png" width="320"></a> | <a href="screenshots/integration-settings.png"><img src="screenshots/integration-settings.png" width="320"></a> |
 
+---
 <a id="license-and-trademarks"></a>
 ## 📜 License and trademarks
 
