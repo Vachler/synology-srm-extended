@@ -111,7 +111,8 @@ Vlastní tabulky, detaily a WOL jsou dostupné správci HA. Integrace využívá
 
 ## 📦 Instalace
 
-Aktuálně je zdokumentovaná ruční instalace. Instalace přes HACS není v tomto projektu připravená.
+[![Open your Home Assistant instance and add this repository to HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=Vachler&repository=synology-srm-extended&category=integration)
+---
 
 1. Stáhněte [instalační ZIP nejnovější verze](https://github.com/Vachler/synology-srm-extended/releases/latest) a rozbalte jej.
 
